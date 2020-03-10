@@ -80,10 +80,93 @@
 		<xsl:for-each select="/xml/link">
 			<LINK><xsl:apply-templates/></LINK>
 		</xsl:for-each>
-		<link rel="stylesheet" type="text/css" href="jot.css" ></link>
-		<script type="text/javascript" src="jot.js" ></script>
+		<!-- link rel="stylesheet" type="text/css" href="jot.css" ></link>
+		<script type="text/javascript" src="jot.js" ></script -->
 		
 		<STYLE>
+		/* 
+			colours are from the light tomorrow theme https://github.com/chriskempson/tomorrow-theme 
+		
+			#ffffff Background
+			#efefef Current Line
+			#d6d6d6 Selection
+			#4d4d4c Foreground
+			#8e908c Comment
+			#c82829 Red
+			#f5871f Orange
+			#eab700 Yellow
+			#718c00 Green
+			#3e999f Aqua
+			#4271ae Blue
+			#8959a8 Purple
+		
+		*/
+		/* also in jot.css  */
+		*{ 	color:#4d4d4c; line-height:1.2em;  font-family:  sans-serif;}
+		
+		/* headings */
+		h1,
+		h2,
+		h3,
+		h4,
+		h5,
+		h6 { 	font-weight: 700; }
+		
+		h1,
+		h2,
+		h3,
+		h4,
+		h5,
+		h6 { font-weight: 700; }
+		
+		h1 { font-size: 2.8em; }
+		
+		h2 { font-size: 2.4em; }
+		
+		h3 { font-size: 1.8em; }
+		
+		h4 { font-size: 1.4em; }
+		
+		h5 { font-size: 1.3em; }
+		
+		h6 { font-size: 1.15em; }
+		
+		code {
+			margin:0.5em;
+			padding:0.1em 0.5em 0.1em 0.5em;
+			color:#efefef;
+			background-color:#4d4d4c ;  
+		}
+		
+		code p{
+			color:#efefef;
+			background-color:#4d4d4c ;
+			margin:0;
+			padding:0;
+		}
+		
+		pre{
+			margin: 1em;
+			padding:0.5em;
+			font-weight: normal;
+			font-family: monospace, serif,courier;
+			font-size:0.8em;	
+			white-space: pre-wrap;
+			word-wrap: break-word;
+			border: 1pt solid #8e908c;	
+			box-shadow: 5pt 5pt 8pt #8e908c;
+		}
+		
+		pre.inline{
+			margin: 0em;
+			padding:0.1em 0.5em 0.1em 0.5em;
+			display:inline;
+			box-shadow: none;
+			border: 1pt solid #8e908c;
+		}
+		
+		a{ color:#4271ae; }
+		
 		.caption {		
 			text-align: center;
 			display: block;
@@ -102,31 +185,28 @@
 			border: none;
 		} 
 		
-		blockquote {
-			font-family:monospace;
-		}
+		blockquote { font-family:monospace; }
 		
 		img {
 			display: block;
+			margin:0.5em;
 			margin-left: auto;
 			margin-right: auto;
-			border: 1px dotted gray;
+			border: 1px dotted #4d4d4c;
 		}
-		li {
-			margin:0.5em;
-		}
-		table tr:nth-child(odd){
-			background:lightgray
-		}
+		
+		li { margin:0.5em; }
+		
+		table tr:nth-child(odd){	background:#efefef; }
+		
 		th {
-			background:silver; 
+			background: #d6d6d6;
 			padding :0.5em; 	
 		}
-		td{
-			padding :0.2em 1em 0.2em 1em; 
-		}
-		.alert{background:pink;}
-				
+		
+		td{	padding :0.2em 1em 0.2em 1em; }
+		
+		.alert{background:#f5871f;}		
 
 		</STYLE><xsl:text>&#10;</xsl:text>	
 		</HEAD><xsl:text>&#10;</xsl:text>		
@@ -175,7 +255,7 @@
 	<!-- xsl:template match="line"></xsl:template -->
 	
 	<!-- todo| is some better way of doing this - so dont have to do for every html tag?-->
-	<xsl:template match="pre">	<PRE>		<xsl:apply-templates /></PRE>		</xsl:template>
+	<xsl:template match="pre">	<PRE><xsl:call-template name="common_attibutes"/><xsl:apply-templates /></PRE></xsl:template>
 	<xsl:template match="i">		<I>			<xsl:apply-templates /></I>			</xsl:template>
 	<xsl:template match="b">		<STRONG><xsl:apply-templates /></STRONG></xsl:template>
 	<xsl:template match="quote">
@@ -219,15 +299,17 @@
 		<xsl:variable name="n">
 			<xsl:number/>  
 		</xsl:variable>
-                <xsl:variable name="level"><xsl:value-of select="count(ancestor::*)"/></xsl:variable>
-		<xsl:call-template name="indent"><xsl:with-param name="level" select="$level"/></xsl:call-template>
-
-		<xsl:if test="not(ancestor-or-self::*/when) or contains($choose,normalize-space(ancestor-or-self::*/when)) ">
+    <xsl:variable name="level"><xsl:value-of select="count(ancestor::*)"/></xsl:variable>
+		<xsl:if 	test="not(ancestor-or-self::pre) ">
+		<xsl:call-template name="indent"><xsl:with-param name="level" select="$level"/></xsl:call-template >
+   </xsl:if>
+   
+		<xsl:if 	test="not(ancestor-or-self::*/when)    	   or           	contains($choose,normalize-space(ancestor-or-self::*/when)) ">
 		<xsl:choose>
-			<xsl:when test="parent::pre" >	
+			<xsl:when 	test="parent::pre" >	
 						<xsl:call-template name="common_attibutes"/>
 						<!-- \r\n --> <xsl:text>&#xa;&#xd;</xsl:text><xsl:apply-templates />
-					</xsl:when>	
+			</xsl:when>	
 						<xsl:when test="parent::list or parent::ol or parent::ul" >	
 				<LI> 
 				<xsl:call-template name="common_attibutes"/>
@@ -258,15 +340,14 @@
 						<xsl:when test="$level > 5" >	
 				<SPAN style="font-size=-1"><P><xsl:call-template name="common_attibutes"/><xsl:apply-templates /></P></SPAN>
 			</xsl:when>	
-	
 			<xsl:otherwise>
 				<P>              
 				<xsl:call-template name="common_attibutes"/>			
 				<xsl:apply-templates />
 				</P>
 			</xsl:otherwise>
-		</xsl:choose>		
-			</xsl:if>
+		</xsl:choose>
+		</xsl:if>
 	</xsl:template>
 	
 	<xsl:template match="img">	
@@ -497,13 +578,13 @@
 	
 	<xsl:template match="header">	
 	<xsl:call-template name="autoIndent"></xsl:call-template>
-		<THEAD>	
+
 	<xsl:call-template name="autoIndent"></xsl:call-template>
 		<TR>
 		<xsl:call-template name="common_attibutes"/>
 		<xsl:apply-templates/>
 		</TR>
-	<xsl:call-template name="autoIndent"></xsl:call-template></THEAD>		
+	<xsl:call-template name="autoIndent"></xsl:call-template>	
 	</xsl:template>
 		
 	<xsl:template match="row">	

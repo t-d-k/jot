@@ -70,7 +70,7 @@ id
 	comment
 	case
 p
-	default|id
+	default|LEV
 	a
 	L
 	code
@@ -82,6 +82,9 @@ p
 	class
 	comment
 	case
+	todo
+	ul
+	id
 a
 	default|r
 	comment|common to all tags
@@ -137,6 +140,8 @@ ol
 	when
 	class
 	comment
+	ul
+	em
 ul
 	default|p
 	img
@@ -146,6 +151,10 @@ ul
 	when
 	class
 	comment
+	em
+	a
+	ul
+	ol
 comment| no difference bt case and LEV, but xsl checks case must have 'when' subnode
 case
 	default|LEV

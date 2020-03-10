@@ -1,18 +1,18 @@
 Very Brief Building Instructions
-	Windows:
+	Windows
 	ul|
-    Install "Visual Studio Code"
-    Install the C/C++ extension
-    Install the compiler
-    ul|
-       download from [a r=https://visualstudio.microsoft.com/downloads/|microsoft]
-       then select "build tools for visual studio"
+		Install "Visual Studio Code"
+		Install the C/C++ extension
+		Install the compiler
+		ul|
+			download from [a r=https://visualstudio.microsoft.com/downloads/|microsoft]
+			then select "build tools for visual studio"
 		Open the file jot2xml.sln
 		Build
-  Linux
-  ul|
-  	Install QT Creator
-  	Open the file jot2xmlqt/jot2xml.pro in QT Creator
-  	Build
-	
-        
+	Linux
+	ul|
+		Install QT Creator
+		Open the file jot2xmlqt/jot2xml.pro in QT Creator
+		Build
+		
+

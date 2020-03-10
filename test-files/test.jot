@@ -1,0 +1,153 @@
+Jot - just and only text
+	lev [.|nextlev] {next2}
+				table caption="Escape Sequences !@#$%^&*()" id=table2|
+					header|{CHAR}{ESCAPE SEQUENCE}
+					{ {~[}{~~~[, ~[lb~], ~[left-brace~]}              }
+					{ {~]}{~~~], ~[rb~], ~[right-brace~]}              }
+					{ {~{}{~~~}, ~[right-curly~]}                      }
+					{ {~{}{~~~{, ~[left-curly~]}                       }
+					{ {~|}{~~~|, ~[pipe~]}                             }
+					{ {~~}{~~~~, ~[tilde~]}                            }
+					{ {SPACE at beginning of line}{"~~ ", ~[SPACE~]}   }
+					{ {TAB at beginning of line}{"~~\t", ~[TAB~]}      }
+					{ {QUOTE in attribute contents}{~~", ~[QUOTE~] }	 }	
+				p|paragraph	
+				table caption=more!@#$%^&*()unquotedvalue id=table2|[header|{x}{y}{z}]{{a}{b}{c}}{{1}{2}{3}}{{α}{β}{γ}}
+	{note chars do not need to be escaped if they are not in a position to be interpreted as special chars. eg quote marks only need to be escaped if they are in tag contents.}
+		There are no escape sequences for dots (.) or equals (=), therefore these can not be used in idents, and "=" can not be used in tag contents.
+		The following always need to be escaped if literal chars: ~[,~],~{,~},~|,~~
+	case when=test| oinly show if choose param contains "test"
+	. class=alert| level X with sibling "class~|alert"
+	empty "a" tag. [a| ] 
+	ul| 
+		img|double indented tagphrase
+	test escape chars and special chars
+		tilde"[tilde]"space"[space]"pipe"[pipe]"quote'[quote]'right brace"[rb]"[tab][lb][left-bracket][right-bracket][left-curly][right-curly]unchaged special--"~!@#$%^&*(){}:"?,./;'\=-_+)(--
+		
+		~[~]~{~}~|~~~"
+	common accented chars
+		á	Á	 à	 À	 â	 Â	 ä	 Ä	 ã	 Ã	 å	 Å	 æ	 Æ	 ç	 Ç	 é	 É	 è	 È	 ê	 Ê	 ë	 Ë	 í	 Í	 ì	 Ì	 î	 Î	 ï	 Ï	 ñ	 Ñ	 ó	 Ó	 ò	 Ò	 ô	 Ô	 ö	 Ö	 õ	 Õ	 ø	 Ø	 œ	 Œ	 ß	 ú	 Ú	 ù	 Ù	 û	 Û	 ü	 Ü
+	list|
+		~ initial space
+		~	initial tab
+		variant test 1
+			when|first
+			first
+		variant test 2
+			when|second
+			second
+		variant test 3
+			when|fi
+			fi
+		. when=third|
+			variant test 4 (third)
+				third
+					v sub2
+						
+	Jot is a minimalist format which is a mostly mark-up free markup language. it achieves this by ....
+	It is similar to json, markdown, 
+	the heirarchichal nature means it also works well with editors that act as single page outliners, if they are configured to 'fold' sections based on indentation level.
+	jot files work with an arbitrary schema, so they are best thought of as a compressed form of xml, while  markdown etc are alternative syntaxes for html. [a r=!@#$%^&*()1234567890|'maildir']. The 
+	list|
+		num|ul
+		produce arbitray xml (eg openoffice format)
+		produce plain text output
+		variant files (ie  different langauges)
+		produce sets of similar files from a template and source files containing unique text, ie like a text macro system
+		
+		
+	to use go to the [a r=#howto|howto section]   
+	list|ul
+	should be ul
+	allow subnodes of type list=ul~|
+	ol|
+		list item 1
+		list item 2
+	lev2
+		list|
+			num|ul
+			a - make sure ul
+			b
+			c		
+			sublist
+			ul|
+				1
+				2
+				3
+				ol|
+					α
+					β
+					γ
+					
+					
+	Experiment 1
+	list|
+		num|numbered
+		should be ol	
+		Experiment 2
+		ol|
+			Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+	Experiment 3
+		Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+		spam
+		pre|
+			(7A4=5d5)(7A6="Buy_Today" ~{7CD5A8F@cabinetsbysunray.com~})(7A7
+			=d474f7684@domain.com)(7A8
+			=20120831162642.EAA4667AAEF3230ECCA8@VSHARMA13)(7AA=5c9)(7AC
+			="Buy_Today" ~{37A9BF47F@chinainspect.com~})(7AD
+			=474f7684@domain.com)(7AE=20120831165221.4E56D7C24CDFADB61EDFA)	
+		Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+		pre|2314, "Buy_Today~{7CD5A8F@cabinetsbysunray.com~}, 474f7684@squte.com, "Buy_Today Vigara" ~{37A9BF47F@chinainspect.com~} 	
+			
+	Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+	invalid num value below:
+	list num=err id=howto1| 
+		still a list
+	valid num value
+	list num=numbered id=howto|
+		target of #howto
+		list|
+			num|numbered
+			Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+				
+				
+					Install xvfb eg [code|sudo apt-get install xvfb]
+					Create a file called run_thunderbird.sh and paste this in:
+					code|
+						#!/bin/bash
+						# use -P profile name for profile
+						xvfb-run thunderbird& 
+						TB_PID=$!
+						# wait 10 mins
+						sleep 600
+						kill -KILL  $TB_PID
+						wait $TB_PID
+						# leaves xvfb instance running but this will be reused by any later instances of xvfb-run
+					Then in the command line as root:	
+					code|
+						chmod ug+x run_thunderbird.sh
+						mv -i	run_thunderbird.sh /opt/	
+		Cron job
+			Now schedule the download to happen regularly in a cron job. Add the following script to /etc/cron.hourly, name it 00tbird.sh and set its perms using chmod as above:[pre class=inline|/opt/run_thunderbird.sh]
+			
+			This step is only needed when you want to access the mail with other clients or from other boxes
+				list|
+					num|ol
+					
+					Edit ~/.muttrc to be:
+					code|
+						set spoolfile=imap://user@127.0.0.1/
+						set folder=imap://user@127.0.0.1/
+					Before running tbird again delete the soft links
+			
+			comment|
+				shouldnt show
+					shouldnt show
+			case when=web|
+				shouldnt show
+				todo|shouldnt show
+
+See also 
+		a r=../link1|thunderbird and gmail
+		a r="../link2"|mork
+

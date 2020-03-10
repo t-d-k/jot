@@ -1,0 +1,229 @@
+Jot - just and only text
+	intro
+		Jot is a mostly mark-up free markup language. 
+		Jot files can have no markup codes, and be as easy to read as plain text, yet be converted to styled XML or HTML 
+		It achieves this by using white-space as a marker. Whitespace is skipped over by the eye and is non-distracting, unlike markup codes used by alternatives. 
+		A jot document uses indentation to show the structure, this scheme is sometimes naturally used to show the structure of text, as below:
+		todo|[img|text layout]
+		it uses the concept of a 'default' tag for each child node, which avoids most markup (e.g. the top level node is the document title). However other tags can be specified with a simple syntax.
+	what its for
+		Jots hierarchical structure means it also works well with editors that act as single page outliners, if they are configured to 'fold' sections based on indentation level.
+		jot files work with an arbitrary schema, so they are best thought of as a compressed form of XML, while  markdown etc are alternative syntaxes for HTML. The process for converting jot to an arbitrary output starts with the app jot2xml which converts jot format to XML, the XML file can then be cover ted using XSL. this gives a lot of flexibility, any output that can be produced by XSL can be produced with jot. 
+		Jot can also be used as a templating system, e.g. , by using multiple XSL files or XSL parameters.
+		Some of the things that can be done with jot+XSL, include:
+		ul|
+			produce arbitrary XML (e.g. open document format)
+			produce plain text output
+			convert to HTML
+			producing different formats from one file, e.g. ODF and HTML.
+			variant files (i.e.  generating one HTML document for the web and one for an intranet with different text in one place only)
+			produce sets of similar files from a template and source files containing unique text, i.e. like a text macro system
+	comparison with markdown
+		compared to Markdown, jot is:
+			harder to use 
+				you need a two stage process to make HTML from a jot file, vs one for Markdown
+			harder to extend
+				Markdown allows embedded arbitrary HTML. In jot to add a new tag type you have to update the schema and the XSL
+			more powerful
+				e.g. you can create HTML files with an arbitrary template in jot.For Markdown you would have to use an additional text macro system.
+			more flexible
+				a jot file can be converted to multiple outputs, e.g. Markdown, rest, json (you need to write XSL files to do these)
+			stricter	
+				jot enforces a schema when it is converted to XML, meaning errors are caught immediately
+	how to use it
+		To create an HTML file from a jot file, first convert the jot file to XML by using the program jot2xml. Next convert that to HTML by using the file jotxml2html.xsl. This XSL file is designed to work with the default (built-in) schema.
+		To customise the output, modify the XSL file.
+	Getting Started
+		ul|
+			download the jot2xml executable (available for Windows and Linux). 
+			Install an XSL processor.
+				For Windows I recommend [a r=http://www.saxonica.com/download/download_page.xml|saxonica]. 
+				For Ubuntu Linux you can run [code|sudo apt install libsaxonb-java].
+				The XSL processor should support XSLT 2.0				
+			Configure your text editor.
+				Instructions for Vim, and Jedit are given [todo|link].
+				For other editors, ensure that it:
+				ul|
+					does NOT silently replace tabs with spaces.
+					uses soft-wrapping only, i.e. does not insert line feeds
+					saves in ASCII or UTF-8
+				ideally it should also:
+				ul|
+					indent wrapped lines at the start indentation level
+					support 'folding' based on indentation level
+					make spaces visible at the start of lines
+					highlight jot syntax
+					have other outliner features, such as 'hoisting'
+			Convert your jot file to HTML
+				There are sample bash and .bat files to do this named [a r=convert-jot-to-html.bat|convert-jot-to-html.bat] and [a r=convert-jot-to-html.sh|convert-jot-to-html.sh]. You will need to update the paths in these files.
+	Writing JOT files (syntax)
+		indentation
+			a jot file distinguishes separate types of text by the indentation level. Each line is indented by tabs, and this shows the structure of the document.
+			For example if the first line is not indented this is the title of the page. Any line indented by one tab are headings. text indented by three tabs is body text and anything indented further is footnotes.
+			This is a simple HTML page:
+			pre|
+				This is the page title
+					this is tagged as <<H1>>
+						this is tagged as <<h2>>
+								this is tagged with <<p>>, it's normal body text
+								another paragraph of body text
+									this is shown in a smaller font still
+						another <<H2>> heading
+			
+			Which tag represents each level is specified in the 'schema', but can be overridden by using markup in the jot file.
+			Each paragraph ends up as a node in the xml output, surrounded by <p>. there are other ways of specifying strings of text are to be put in a separate tag, called a 'node'.
+		markup
+			sometimes you want a different tag than the default, this is done using markup. 
+			pipe tags
+				To markup a block of text as being a tag, you can use the tag name followed by the pipe symbol '|', on a line of it's own.
+				The tag 'ul' represents an unnumbered list, so to show a list of items like this;
+				pre|
+					ul~|
+						a
+						b
+						c
+					some more text
+				this is rendered as:
+				pre|
+					<<ul>>
+						<<li>>a<</li>>
+						<<li>>b<</li>>
+						<<li>>c<</li>>
+					<</ul>>	
+					<<p>>some more text<</p>>
+				note that the [em|ul] tag applies to the whole indented block, and that the default child tag for [em|ul] is [em|li] so there is no need for other markup. 
+			pipes2
+				To tag a single line you can use a different syntax, that looks like [code|tag~|line]. For example:
+				pre|
+					em~|some text to emphasise
+						some more text
+				this will render as:
+				pre|
+					<<em>>some text to emphasise<</em>><p>some more text</p>
+				whitespace after a pipe symbol is ignored
+			inline tags
+				If you don't want to make a separate line for a node, you can embed it in a line by using square brackets like this [code|first ~[em~|text to emphasise~] after]
+				This is converted to:
+				pre| first <<em>>text to emphasise<</em>> after
+			attributes
+				A simpler way of adding a small subnode is the attribute style, like this [code|em class=my-class id=my-id~|text to emphasise with class]
+				This renders as;
+				pre| <<em class="my-class" id="my-id">>text to emphasise with class<</em>>
+				Attributes are not a different type of node, just a different syntax. The above HTML will also be created by the following
+				code|
+					em~|~[class~|my-class~]~[id~|my-id~]text to emphasise with class
+				code|
+					em~|
+						class~|my-class
+						id~|my-id
+						text to emphasise with class
+				sometimes you want to show a tag in the attribute syntax without specifying the parent tag. In this case use '.' to mean the default tag. e.g.:
+				pre|. class=my-class id=my-id~|text to emphasise with class
+				This shows as:
+				pre| <<H2 class="my-class" id="my-id">>text to emphasise with class<</H2>>
+				if <H2> is the default tag at that level.
+			curly brackets
+				There is an abbreviated way of showing a subnode with the default tag. The text is put in curly brackets [code|like ~{this~}]. This is an abbreviated form of [code|like ~[.~|this~]]
+				This is convenient for tables, e.g.
+				pre|
+					table~|
+						~{a~}~{b~}~{c~}
+						~{1~}~{~2~}~{3~}
+				will create:
+				pre|
+					<table>
+						<tr><td>a</td><td>b</td><td>c</td></tr>
+						<tr><td>1</td><td>2</td><td>3</td></tr>
+					</table>	
+				You could also write this as:
+				pre|
+					table~|~{~{a~}~{b~}~{c~}~}~{~{1~}~{~2~}~{3~}~}			
+		
+		Escaping characters
+			table caption="Escape Sequences"|
+				header|{CHAR}{ESCAPE SEQUENCE}
+				{{~[}{<~~~[, ~[lb~], ~[left-brace~]}}
+				{{~]}{~~~], ~[rb~], ~[right-brace~]}}
+				{{~{}{~~~}, ~[right-curly~]}}
+				{{~{}{~~~{, ~[left-curly~]}}
+				{{~|}{~~~|, ~[pipe~]}}
+				{{~~}{~~~~, ~[tilde~]}}
+				{{SPACE at beginning of line}{"~~ ", ~[SPACE~]}}
+				{{TAB at beginning of line}{"~~\t", ~[TAB~]}}
+				{{QUOTE in tag contents}{~~", ~[QUOTE~] }}		
+	
+			em|note chars do not need to be escaped if they are not in a position to be interpreted as special chars. e.g. quote marks only need to be escaped if they are in attribute values.
+			There are no escape sequences for dots (.) or equals (=), therefore these can not be used in identifiers (tags), and "=" can not be used in attribute values.
+			The following always need to be escaped if literal chars: ~[,~],~{,~},~|,~~
+	Writing JOT files (HTML)
+		The default schema will produce HTML used with jotxml2html.xsl.
+		If the first line is not indented it is used as the page title.
+		Lines indented by one tab are tagged <H1>, 2 tabs <H2> etc up to <H4>. After 6 indents text is shown as <p> only.
+		Some useful tags:
+		comment
+			nodes tagged [em|comment] are suppressed in the HTML
+		ul ol list num
+			[em|ul] makes an unnumbered list. [em|ol] makes a numbered list. 
+			[em|list] can have a subnode of [em|num] which can take values ol, ul, numbered, or empty. The default is unnumbered  
+		case when (variant files)
+			Text can be shown only in some outputs of the XSL conversion by using the tags "[em|when]" and "[em|case]", e.g.:
+			code|case when=web~| Download [a r=url|here]
+			If the XSL file is processed with a parameter of '[em|choose]' containing the text "web", then the node will be output, otherwise it will not.
+			example, code|saxonb-xslt -s:"$1.xml" -xsl:"jotxml2html.xsl" -o:"$filename.html" choose=web
+		a r
+			[em|a] makes an HTML a tag and [em|r] an HREF attribute. example:code|~[a ~r=http://github/t-d-k/jot~|Just and Only text~]
+		citation
+			This creates footnotes example:[code|Which is shown in Pew ~[citation link=true~|http://www.pewresearch.org/url~].] See jotxml2html.xsl.
+		table header row cell
+			Creates HTML tables, e.g.
+			pre|
+				table~|
+					header~|~{option~}~{meaning~}
+					~{-s <filename>~}~{schema file, can be omitted~}
+					~{-c~}~{do not check schema~}
+					~{-o <filename>~}~{output file~}
+			The default child of table is row, and the default child of row is cell
+		LEV
+			This is the default tag for plain text, the HTML tag produced depends on the indent level
+		Others
+			Most HTML tags can be produced by using the same string as a jot tag, e.g. code|~[p id=myid~|some text~]
+	Jot2xml
+		expects its input in UTF-8, both windows and Unix line endings supported, and the output is in UTF-8, using Unix line endings.
+		table|
+			header|{option}{meaning}
+			{-s <filename>}{schema file, can be omitted}
+			{??}{do not check schema}
+			{??}{output file}
+		
+	writing schemas
+		Schemas are themselves jot files. The top level node text represents a tag, and the subnodes represent child tags allowed. A tag of 'default' means that is the default child tag, and text tagged 'comment' is ignored e.g.:
+		pre|			
+			ol
+				default~|p
+				comment~|common to all tags
+				id
+				when
+		means that 'id', 'p' and 'when' are the only permitted child tags, and the default is 'p'. 
+		The schema must contain 'xml' as a node, which is the document as a whole. nodes under this are top level tags (i.e. not indented)
+		The schema for schema files is:
+		pre|	
+			xml
+				tag
+			tag
+				default|subtag
+				comment
+				default
+			default
+				subtag
+			comment
+				comment-text
+			comment| no child nodes allowed under sub tags
+			subtag
+			comment| no child nodes allowed under comment text
+			comment-text
+		However this is not checked	
+See also 
+	todo|
+		a r=|Vim Settings
+		a r|jedit settings
+

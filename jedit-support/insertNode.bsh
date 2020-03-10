@@ -1,0 +1,32 @@
+void insertNode()
+{
+	if(buffer.isReadOnly())	return;
+
+	int l = textArea.getCaretLine();
+	textArea.goToStartOfWhiteSpace(false);
+	int start = textArea.getLineStartOffset(l);
+	int p = textArea.getCaretPosition();
+	int disp = p - start;
+	textArea.goToStartOfLine(false);
+	buffer.insert(start, "\n");
+	textArea.goToPrevLine(false);
+	while(textArea.getCaretPosition() < p){
+		buffer.insert(start, "\t");
+	}
+}
+insertNode();
+
+/*
+
+Macro index data (in DocBook format)
+
+	<listitem>
+		<para><filename>insertNode.bsh</filename></para>
+	<abstract><para>
+		adds a line before the current one at the same indent as the current line
+	</para></abstract>
+	</listitem>
+
+*/
+
+// end insertNode.bsh

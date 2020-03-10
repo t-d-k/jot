@@ -1,0 +1,358 @@
+
+<!DOCTYPE HTML
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<HTML xmlns:v2="http://zanox.com/productdata/exportservice/v2">
+<HEAD>
+<META charset="UTF-8"></META><TITLE>Jot - Just and Only Text</TITLE>
+<STYLE>
+		/* 
+			colours are from the light tomorrow theme https://github.com/chriskempson/tomorrow-theme 
+		
+			#ffffff Background
+			#efefef Current Line
+			#d6d6d6 Selection
+			#4d4d4c Foreground
+			#8e908c Comment
+			#c82829 Red
+			#f5871f Orange
+			#eab700 Yellow
+			#718c00 Green
+			#3e999f Aqua
+			#4271ae Blue
+			#8959a8 Purple
+		
+		*/
+		/* also in jot.css  */
+		*{ 	color:#4d4d4c; line-height:1.2em;  font-family:  sans-serif;}
+		
+		/* headings */
+		h1,
+		h2,
+		h3,
+		h4,
+		h5,
+		h6 { 	font-weight: 700; }
+		
+		h1,
+		h2,
+		h3,
+		h4,
+		h5,
+		h6 { font-weight: 700; }
+		
+		h1 { font-size: 2.8em; }
+		
+		h2 { font-size: 2.4em; }
+		
+		h3 { font-size: 1.8em; }
+		
+		h4 { font-size: 1.4em; }
+		
+		h5 { font-size: 1.3em; }
+		
+		h6 { font-size: 1.15em; }
+		
+		code {
+			margin:0.5em;
+			padding:0.1em 0.5em 0.1em 0.5em;
+			color:#efefef;
+			background-color:#4d4d4c ;  
+		}
+		
+		code p{
+			color:#efefef;
+			background-color:#4d4d4c ;
+			margin:0;
+			padding:0;
+		}
+		
+		pre{
+			margin: 1em;
+			padding:0.5em;
+			font-weight: normal;
+			font-family: monospace, serif,courier;
+			font-size:0.8em;	
+			white-space: pre-wrap;
+			word-wrap: break-word;
+			border: 1pt solid #8e908c;	
+			box-shadow: 5pt 5pt 8pt #8e908c;
+		}
+		
+		pre.inline{
+			margin: 0em;
+			padding:0.1em 0.5em 0.1em 0.5em;
+			display:inline;
+			box-shadow: none;
+			border: 1pt solid #8e908c;
+		}
+		
+		a{ color:#4271ae; }
+		
+		.caption {		
+			text-align: center;
+			display: block;
+			margin-left: auto;
+			margin-right: auto;		
+		}
+		
+		.tooltip {
+			position: relative;
+			display: inline-block;
+			border-bottom: 1px dotted black; /* show has tooltip */
+		}
+		
+		.inline { 
+			display: inline;
+			border: none;
+		} 
+		
+		blockquote { font-family:monospace; }
+		
+		img {
+			display: block;
+			margin-left: auto;
+			margin-right: auto;
+			border: 1px dotted #4d4d4c;
+		}
+		
+		li { margin:0.5em; }
+		
+		table tr:nth-child(odd){	background:#efefef; }
+		
+		th {
+			background: #d6d6d6;
+			padding :0.5em; 	
+		}
+		
+		td{	padding :0.2em 1em 0.2em 1em; }
+		
+		.alert{background:#f5871f;}		
+
+		</STYLE>
+</HEAD>
+<BODY>
+<ARTICLE>
+	<H1 CLASS="title">Jot - Just and Only Text</H1><span>
+		<H2>What it is</H2><span><span>
+				<H4>Jot is a (mostly) mark-up free markup language. </H4><span>
+					<DIV>Jot files can have no markup codes, and be as easy to read as plain text, yet be converted to styled XML or HTML </DIV>
+					<DIV>It achieves this by using white-space as a marker. Whitespace is skipped over by the eye and is non-distracting, unlike markup codes. </DIV>
+					<DIV>A Jot document uses indentation to show the structure, this scheme is sometimes naturally used to show the structure of text, as below:</DIV><H1 style="color:red">TODO: img text layout</H1>
+					<DIV>Jot uses the concept of a 'default' tag for each child node, which avoids most markup (e.g. the top level node is the document title). However other tags can be specified with a simple syntax.</DIV></span></span></span>
+		<H2>What it's for</H2><span><span><span>
+					<DIV>Jot's hierarchical structure means editors can be used as single page outliners (if they are configured to 'fold' sections based on indentation level).</DIV>
+					<DIV>Jot files work with an arbitrary schema, so it is a compressed form of XML, while Markdown etc. are abbreviated syntaxes for HTML.</DIV>
+					<DIV>The process for converting jot to an arbitrary output starts with the app <A HREF="#jot2xml">jot2xml</A> which converts jot format to XML, the XML file is then processed using XSL. This gives a lot of flexibility - any output that can be produced by XSL can be produced with jot. </DIV>
+					<DIV>Jot can also be used as a templating system, by using multiple XSL files or XSL parameters.</DIV>
+					<DIV>Some of the things that can be done with jot+XSL include:</DIV>
+					<UL ID="d1e43">
+						<LI>produce arbitrary XML (e.g. open document format)</LI>
+						<LI>produce plain text output</LI>
+						<LI>make HTML</LI>
+						<LI>make different formats from one file, e.g. ODF and HTML.</LI>
+						<LI>variant files (i.e.  generating one HTML document for the web and one for an intranet with different text in one place only)</LI>
+						<LI>produce sets of similar files from a template and source files containing unique text, i.e. like a text macro system</LI>
+					</UL></span></span></span>
+		<H2>Comparison with markdown</H2><span>
+			<H3>Compared to Markdown, jot is:</H3>
+			<UL ID="d1e61">
+				<LI>harder to use <EM>you need a two stage process to make HTML from a jot file, vs one for Markdown</EM></LI>
+				<LI>harder to extend <EM>				Markdown allows embedded arbitrary HTML. In jot to add a new tag type you have to update the schema and the XSL</EM></LI>
+				<LI>more powerful <EM>				e.g. you can create HTML files with an arbitrary template in jot. For Markdown you would have to use an additional text macro system.</EM></LI>
+				<LI>more flexible <EM>				a jot file can be converted to multiple outputs, e.g. Markdown, reStructuredText, json (you need to write XSL files to do these)</EM></LI>
+				<LI>stricter	<EM>jot enforces a schema when it is converted to XML, meaning errors are caught immediately</EM></LI>
+			</UL></span>
+		<H2>How to use it</H2><span><span><span>
+					<DIV>To create an HTML file from a jot file, first convert the jot file to XML by using the program jot2xml. Next convert that to HTML by using the file jotxml2html.xsl.</DIV><EM>
+						<SPAN style="font-size=-1"><P>This XSL file is designed to work with the default (built-in) schema.</P></SPAN></EM><EM>
+						<SPAN style="font-size=-1"><P>To customise the output, modify the XSL file.</P></SPAN></EM></span></span></span>
+		<H2>Getting Started</H2><span>
+			<OL ID="d1e98">
+				<LI>Download the jot2xml executable (available for Windows and Linux). </LI>
+				<LI>Install an XSL processor.</LI>
+				<UL ID="d1e103">
+					<LI>For Windows I recommend <A HREF="http://www.saxonica.com/download/download_page.xml">saxonica</A>. </LI>
+					<LI>For Ubuntu Linux you can run <CODE>sudo apt install libsaxonb-java</CODE>.</LI>
+					<LI>The XSL processor should support XSLT 2.0				</LI>
+				</UL>
+				<LI>Configure your text editor</LI>
+				<LI>
+					<DIV>Instructions for Vim, and Jedit are given <A HREF="#editors">below</A>.</DIV>
+					<DIV>For other editors, it must:</DIV>
+					<UL ID="d1e130">
+						<LI>NOT silently replace tabs with spaces.</LI>
+						<LI>use soft-wrapping only, i.e. does not insert line feeds</LI>
+						<LI>save in ASCII or UTF-8</LI>
+					</UL>
+					<DIV>Ideally it should also:</DIV>
+					<UL ID="d1e139">
+						<LI>indent wrapped lines at the start-of-line indentation level</LI>
+						<LI>support 'folding' based on indentation level</LI>
+						<LI>make spaces visible at the start of lines</LI>
+						<LI>highlight jot syntax</LI>
+						<LI>have other outliner features, such as 'hoisting'</LI>
+					</UL></LI>
+				<LI>Convert your jot file to HTML
+					<DIV> There are sample bash and .bat files to do this named <A HREF="../convert-jot-to-html.bat">convert-jot-to-html.bat</A> and <A HREF="../convert-jot-to-html.sh">convert-jot-to-html.sh</A>. You will need to update the paths in these files.</DIV></LI>
+			</OL></span>
+		<H2>Writing JOT files (syntax)</H2><span>
+			<H3>Indentation</H3><span><span>
+					<DIV>A jot file distinguishes separate types of text - shown with different tags in HTML - by the indentation level. Each line is indented by tabs, and this shows the structure of the document.</DIV>
+					<DIV>For example if the first line is not indented this is the title of the page. Any line indented by one tab are headings. text indented by three tabs is body text and anything indented further is shown in a smaller font.</DIV>
+					<DIV>This is a simple HTML page:</DIV><PRE>
+&#xD;This is the page title
+&#xD;	this is tagged as &lt;H1&gt;
+&#xD;		this is tagged as &lt;h2&gt;
+&#xD;			this is tagged with &lt;p&gt;, it's normal body text
+&#xD;			another paragraph of body text
+&#xD;				this is shown in a smaller font still
+&#xD;		another &lt;H2&gt; heading</PRE>
+					<DIV>Which tag represents each level is specified in the 'schema', but can be overridden by using markup in the jot file.</DIV>
+					<DIV>Each paragraph ends up as a node in the xml output, surrounded by &lt;p&gt;.</DIV></span></span>
+			<H3>Markup</H3><span>
+				<H4>Sometimes you want a different tag than the default, this is done using markup. </H4>
+				<H4>Pipe tags</H4><span>
+					<DIV>To markup a block of text as being a tag, you can use the tag name followed by the pipe symbol '|', on a line of it's own.</DIV>
+					<DIV>The tag 'ul' represents an unnumbered list, so to show a list of items like this;</DIV><PRE>
+&#xD;ul|
+&#xD;	a
+&#xD;	b
+&#xD;	c
+&#xD;some more text</PRE>
+					<DIV>this is rendered as:</DIV><PRE>
+&#xD;&lt;ul&gt;
+&#xD;	&lt;li&gt;a&lt;/li&gt;
+&#xD;	&lt;li&gt;b&lt;/li&gt;
+&#xD;	&lt;li&gt;c&lt;/li&gt;
+&#xD;&lt;/ul&gt;	
+&#xD;&lt;p&gt;some more text&lt;/p&gt;</PRE>
+					<DIV>note that the <EM>ul</EM> tag applies to the whole indented block, and that the default child tag for <EM>ul</EM> is <EM>li</EM> so there is no need for other markup. </DIV></span>
+				<H4>More pipes</H4><span>
+					<DIV>To tag a single line you can use a different syntax, that looks like <PRE CLASS="inline">tag|line</PRE>. For example:</DIV><PRE>
+&#xD;em|some text to emphasise
+&#xD;some more text</PRE>
+					<DIV>this will render as:</DIV><PRE>
+&#xD;&lt;em&gt;some text to emphasise&lt;/em&gt;&lt;p&gt;some more text&lt;/p&gt;</PRE>
+					<DIV>whitespace after a pipe symbol is ignored</DIV></span>
+				<H4>Inline tags</H4><span>
+					<DIV>If you don't want to make a separate line for a node, you can embed it in a line by using square brackets like this <PRE CLASS="inline">first [em|text to emphasise] after</PRE></DIV>
+					<DIV>This is converted to: <PRE CLASS="inline">first &lt;em&gt;text to emphasise&lt;/em&gt; after</PRE></DIV></span>
+				<H4>Attributes</H4><span>
+					<DIV>A simpler way of adding a small subnode is the attribute style, like this <PRE>em class=my-class id=my-id|text to emphasise with class</PRE></DIV>
+					<DIV>This renders as:</DIV><PRE>
+&#xD;&lt;em class="my-class" id="my-id"&gt;text to emphasise with class&lt;/em&gt;</PRE>
+					<DIV>Attributes are not a different type of node, just a different syntax. The above HTML will also be created by the following</DIV><PRE>
+&#xD;					em|[class|my-class][id|my-id]text to emphasise with class</PRE>
+					<DIV>and</DIV><PRE>
+&#xD;em|
+&#xD;	class|my-class
+&#xD;	id|my-id
+&#xD;	text to emphasise with class</PRE>
+					<DIV>sometimes you want to show a tag in the attribute syntax without specifying the parent tag. In this case use '.' to mean the default tag. e.g.:</DIV><PRE>
+&#xD;. class=my-class id=my-id|text to emphasise with class</PRE>
+					<DIV>This shows as:</DIV><PRE>
+&#xD;&lt;H2 class="my-class" id="my-id"&gt;text to emphasise with class&lt;/H2&gt;</PRE>
+					<DIV>if &lt;H2&gt; is the default tag at that level.</DIV></span>
+				<H4>Curly brackets</H4><span>
+					<DIV>There is an abbreviated way of showing a subnode with the default tag. The text is put in curly brackets <PRE CLASS="inline">like {this}</PRE>. This is an abbreviated form of <PRE CLASS="inline">like [.|this]</PRE></DIV>
+					<DIV>This is convenient for tables, e.g.</DIV><PRE>
+&#xD;table|
+&#xD;	{{a}{b}{c}}
+&#xD;	{{1}{2}{3}}</PRE>
+					<DIV>will create:</DIV><PRE>
+&#xD;&lt;table&gt;
+&#xD;	&lt;tr&gt;&lt;td&gt;a&lt;/td&gt;&lt;td&gt;b&lt;/td&gt;&lt;td&gt;c&lt;/td&gt;&lt;/tr&gt;
+&#xD;	&lt;tr&gt;&lt;td&gt;1&lt;/td&gt;&lt;td&gt;2&lt;/td&gt;&lt;td&gt;3&lt;/td&gt;&lt;/tr&gt;
+&#xD;&lt;/table&gt;	</PRE>
+					<DIV>You could also write this as:</DIV><PRE>
+&#xD;table|{{a}{b}{c}}{{1}{2}{3}}			</PRE></span></span>
+			<H3>Escaping characters</H3><span><span>
+					<TABLE ID="d1e367"><CAPTION>Escape Sequences</CAPTION>
+						
+						<TR>
+							<TH>CHAR</TH><TH> ESCAPE SEQUENCE</TH></TR>
+						
+						<TR><TD>[</TD><TD> ~[, [lb], [left-brace]</TD></TR>
+						<TR><TD>]</TD><TD> ~], [rb], [right-brace]</TD></TR>
+						<TR><TD>{</TD><TD> ~}, [right-curly]</TD></TR>
+						<TR><TD>{</TD><TD> ~{, [left-curly]</TD></TR>
+						<TR><TD>|</TD><TD> ~|, [pipe]</TD></TR>
+						<TR><TD>~</TD><TD> ~~, [tilde]</TD></TR>
+						<TR><TD> SPACE at beginning of line</TD><TD>"~ ", [SPACE]</TD></TR>
+						<TR><TD> TAB at beginning of line</TD><TD>"~\t", [TAB]</TD></TR>
+						<TR><TD> QUOTE in attribute contents</TD><TD>~", [QUOTE] </TD></TR>
+					</TABLE><EM>
+						<SPAN style="font-size=-1"><P>Note chars do not need to be escaped if they are not in a position to be interpreted as special chars. e.g. quote marks only need to be escaped if they are in attribute values.</P></SPAN></EM>
+					<DIV>There are no escape sequences for dots (.) or equals (=), therefore these can not be used in identifiers (tags), and "=" can not be used in attribute values.</DIV>
+					<DIV>The following always need to be escaped if literal chars: [,],{,},|,~</DIV></span></span></span>
+		<H2>Writing JOT files (HTML)</H2><span><span><span>
+					<DIV>The default schema will produce HTML when used with jotxml2html.xsl.</DIV>
+					<DIV>If the first line is not indented it is used as the page title.</DIV>
+					<DIV>Lines indented by one tab are tagged &lt;H1&gt;, 2 tabs &lt;H2&gt; etc up to &lt;H4&gt;. After 6 indents text is shown as &lt;p&gt; only.</DIV></span></span>
+			<H3>Some useful tags</H3><span>
+				<H4>comment</H4><span>
+					<DIV>nodes tagged <EM>comment</EM> are suppressed in the HTML</DIV></span>
+				<H4>ul ol list num</H4><span>
+					<DIV><EM>ul</EM> makes an unnumbered list. <EM>ol</EM> makes a numbered list. </DIV>
+					<DIV><EM>list</EM> can have a subnode of <EM>num</EM> which can take values ol, ul, numbered, or empty. The default is unnumbered  </DIV></span>
+				<H4>case when (variant files)</H4><span>
+					<DIV>Text can be shown only in some outputs of the XSL by using the tags "<EM>when</EM>" and "<EM>case</EM>", e.g.:</DIV><PRE>
+&#xD;case when=web| Download [a r=url|here]</PRE>
+					<DIV>If the XSL file is processed with a parameter of '<EM>choose</EM>' containing the text 'web', then the node will be output, otherwise it will not.</DIV>
+					<DIV>For example: <CODE>saxonb-xslt -s:"$1.xml" -xsl:"jotxml2html.xsl" -o:"$filename.html" choose=web</CODE></DIV></span>
+				<H4>a r</H4><span>
+					<DIV><EM>a</EM> makes an HTML a tag and <EM>r</EM> an HREF attribute. Example:<PRE>[a ~r=http://github/t-d-k/jot|Just and Only text]</PRE></DIV></span>
+				<H4>citation</H4><span>
+					<DIV>This creates footnotes. Example:<PRE>Which is shown in Pew [citation link=true|http://www.pewresearch.org/url].</PRE> See jotxml2html.xsl.</DIV></span>
+				<H4>table header row cell</H4><span>
+					<DIV>Creates HTML tables, e.g.</DIV><PRE>
+&#xD;table|
+&#xD;<SPAN style="font-size=-1"><P>	header|{option}{meaning}  </P></SPAN><SPAN style="font-size=-1"><P>	{  {-o &lt;filename&gt;}{output file}                  }</P></SPAN><SPAN style="font-size=-1"><P>	{  {-s &lt;filename&gt;}{schema file, can be omitted}  }</P></SPAN><SPAN style="font-size=-1"><P>	{  {-k}{do not check schema}                     }						</P></SPAN></PRE>
+					<DIV>The default child of table is row, and the default child of row is cell</DIV></span>
+				<H4>LEV</H4><span>
+					<DIV>This is the default tag for plain text, the HTML tag produced depends on the indent level</DIV></span>
+				<H4>Others</H4><span>
+					<DIV>Most HTML tags and attributes can be produced by using the same string as a jot tag, e.g. <PRE CLASS="inline">[p id=myid|some text]</PRE>. To add new ones, update both default.schema.jot and jotxml2html.xsl, see &lt;i&gt; and &lt;class&gt; as examples.</DIV></span></span></span>
+		<H2 ID="jot2xml">Jot2xml</H2><span><span><span>
+					<DIV>Expects its input in UTF-8. Both Windows and Unix line endings are supported. The output is in UTF-8, using Unix line endings.</DIV><span>
+						<TABLE ID="d1e564">
+							
+							<TR>
+								<TH>option</TH><TH>meaning</TH></TR>
+							
+							<TR><TD> -o &lt;filename&gt;</TD><TD> output file</TD></TR>
+							<TR><TD> -s &lt;filename&gt;</TD><TD> schema file, can be omitted</TD></TR>
+							<TR><TD>-k</TD><TD> do not check schema</TD></TR>
+						</TABLE></span></span></span></span>
+		<H2>Writing schemas</H2><span><span><span>
+					<DIV>Schemas are themselves jot files. Each top level node represents a tag, and the subnodes represent child tags allowed. A tag of 'default' means that is the default child tag, and text tagged 'comment' is ignored e.g.:</DIV><PRE>
+&#xD;ol
+&#xD;	default|p
+&#xD;	comment|common to all tags
+&#xD;	id
+&#xD;	when</PRE>
+					<DIV>means that 'id', 'p' and 'when' are the only permitted child tags of ol', and the default is 'p'. </DIV>
+					<DIV>The schema must contain 'xml' as a node, which is the document as a whole. Nodes under this are top level tags (i.e. not indented)</DIV>
+					<DIV>The schema for schema files is:</DIV><PRE>
+&#xD;xml
+&#xD;	default|tag
+&#xD;	comment
+&#xD;tag
+&#xD;	default|subtag
+&#xD;	comment
+&#xD;	default
+&#xD;default
+&#xD;	subtag
+&#xD;comment
+&#xD;	comment-text
+&#xD;comment| no child nodes allowed under sub tags
+&#xD;subtag
+&#xD;comment| no child nodes allowed under comment text
+&#xD;comment-text</PRE>
+					<DIV>However when parsing a schema, the schema of the schema is not checked	</DIV></span></span></span>
+		<H2 ID="editors">Editor settings </H2><span><H1 style="color:red">TODO: editor settings</H1><A HREF="todo">
+				<H4>Vim Settings</H4></A><A HREF="todo">
+				<H4>jEdit settings</H4></A></span></span>
+</ARTICLE>
+</BODY>
+</HTML>

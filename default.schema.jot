@@ -1,0 +1,291 @@
+xml
+	default|LEV
+	title
+	comment|common to all tags
+	id
+	when
+	class
+	comment
+	case
+img
+	default|src
+	title
+	comment|common to all tags
+	id
+	when
+	class
+	comment
+	border
+	alt
+	width
+	height
+	case
+video
+	default|src
+	title
+	comment|common to all tags
+	id
+	when
+	class
+	comment
+	border
+	alt
+	width
+	height
+	case
+LEV
+	default|LEV
+	comment| indent level shows heading type
+	comment|common to node type tags (LEV, list, case, table)
+	quote
+	list
+	ol
+	ul
+	a
+	L
+	todo
+	pre
+	p
+	img
+	video
+	em
+	strong
+	code
+	form
+	b
+	table
+	citation
+	comment|common to all tags
+	id
+	when
+	class
+	comment
+	case
+id
+	quote
+	default|p
+	comment|common to all tags
+	when
+	class
+	comment
+	case
+p
+	default|id
+	a
+	L
+	code
+	list
+	b
+	comment|common to all tags
+	id
+	when
+	class
+	comment
+	case
+a
+	default|r
+	comment|common to all tags
+	id
+	when
+	class
+	comment
+	target
+	dld
+	rel
+	case
+	img
+L
+	comment|no subnodes allowed
+code
+	default|p
+	comment|common to all tags
+	id
+	when
+	class
+	comment
+comment
+	default|LEV
+	todo
+	img
+	a
+	L
+	comment|common to all tags
+	id
+	when
+	class
+	code
+	em
+citation
+	default|a
+	L
+	comment|common to all tags
+	id
+	when
+	class
+	comment
+quote
+	default|p
+	comment|common to all tags
+	id
+	when
+	class
+	comment
+ol
+	default|p
+	comment|common to all tags
+	id
+	when
+	class
+	comment
+ul
+	default|p
+	img
+	code
+	comment|common to all tags
+	id
+	when
+	class
+	comment
+comment| no difference bt case and LEV, but xsl checks case must have 'when' subnode
+case
+	default|LEV
+	comment| indent level shows heading type
+	comment|common to node type tags (LEV, list, case, table)
+	quote
+	list
+	ol
+	ul
+	a
+	L
+	todo
+	pre
+	p
+	img
+	em
+	strong
+	code
+	form
+	b
+	table
+	comment|common to all tags
+	id
+	when
+	class
+	comment
+	case
+when
+	comment|as attribute of parent - no subnodes allowed
+list
+	comment|  sim to when
+	default|LEV
+	num
+	comment|common to node type tags (LEV, list,table)
+	quote
+	list
+	ol
+	ul
+	a
+	L
+	todo
+	pre
+	p
+	img
+	em
+	strong
+	code
+	form
+	b
+	table
+	comment|common to all tags
+	id
+	when
+	class
+	comment
+	case
+num
+	comment| no subnodes - ident only = "ol", "ul", "numbered" or empty (= ul)
+table
+	default|row
+	header
+	caption
+	comment|common to node type tags (LEV, list, case, table)
+	quote
+	list
+	ol
+	ul
+	a
+	L
+	todo
+	pre
+	p
+	img
+	em
+	strong
+	code
+	form
+	b
+	table
+	comment|common to all tags
+	id
+	when
+	class
+	comment
+	case
+row
+	default|cell
+	comment|common to all tags
+	id
+	when
+	class
+	comment
+	case
+header
+	default|cell
+	comment|common to all tags
+	id
+	when
+	class
+	comment
+	case
+cell
+	default|LEV
+	comment|common to all tags
+	id
+	when
+	class
+	comment
+	case
+id
+	comment|common to all tags
+	when
+	class
+	comment
+pre
+	default|p
+	comment|common to all tags
+	id
+	when
+	class
+	comment
+	case
+form
+	default|action
+	method
+	target
+	input
+	img
+input
+	default|value
+	type
+	name
+	src
+	border
+	alt
+comment|style-only tags	
+em
+	code
+	comment
+		
+
+
+

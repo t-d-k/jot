@@ -1,0 +1,249 @@
+
+
+<xml>
+<p>Jot - just and only text</p>
+<LEV>
+	<p>lev <LEV>nextlev</LEV> <LEV>next2</LEV></p>
+			<LEV>
+			<LEV>
+			<LEV>
+				<table><caption>Escape Sequences !@#$%^&amp;*()</caption><id>table2</id><header>
+					<p><cell>CHAR</cell><cell> ESCAPE SEQUENCE</cell></p></header>
+					<p><row><cell>[</cell><cell> ~[, [lb], [left-brace]</cell></row></p>
+					<p><row><cell>]</cell><cell> ~], [rb], [right-brace]</cell></row></p>
+					<p><row><cell>{</cell><cell> ~}, [right-curly]</cell></row></p>
+					<p><row><cell>{</cell><cell> ~{, [left-curly]</cell></row></p>
+					<p><row><cell>|</cell><cell> ~|, [pipe]</cell></row></p>
+					<p><row><cell>~</cell><cell> ~~, [tilde]</cell></row></p>
+					<p><row><cell> SPACE at beginning of line</cell><cell>"~ ", [SPACE]</cell></row></p>
+					<p><row><cell> TAB at beginning of line</cell><cell>"~\t", [TAB]</cell></row></p>
+					<p><row><cell> QUOTE in attribute contents</cell><cell>~", [QUOTE] </cell> 	 </row>	</p>
+				</table>
+<p>
+				<p>paragraph	</p></p><table>
+				<p><caption>more!@#$%^&amp;*()unquotedvalue </caption><id>table2</id><header><cell>x</cell><cell>y</cell><cell>z</cell></header><row><cell>a</cell><cell>b</cell><cell>c</cell></row><row><cell>1</cell><cell>2</cell><cell>3</cell></row><row><cell>α</cell><cell>β</cell><cell>γ</cell></row></p></table>
+			</LEV>
+
+			</LEV>
+
+			</LEV>
+
+	<p><LEV> note chars do not need to be escaped if they are not in a position to be interpreted as special chars. eg quote marks only need to be escaped if they are in tag contents.</LEV></p>
+	<LEV>
+		<p>There are no escape sequences for dots (.) or equals (=), therefore these can not be used in idents, and "=" can not be used in tag contents.</p>
+		<p>The following always need to be escaped if literal chars: [,],{,},|,~</p>
+	</LEV>
+<case>
+	<p><when>test</when>oinly show if choose param contains "test"</p></case><LEV>
+	<p><class>alert</class>level X with sibling "class|alert"</p></LEV>
+	<p>empty "a" tag. <a></a> </p>
+	<ul><img>
+		<p>double indented tagphrase</p></img>
+	</ul>
+
+	<p>test escape chars and special chars</p>
+	<LEV>
+		<p>tilde"~"space" "pipe"|"quote'"'right brace"]"	[[]{}unchaged special--"~!@#$%^&amp;*()<LEV></LEV>:"?,./;'\=-_+)(--</p>
+		<p>[]{}|~"</p>
+	</LEV>
+
+	<p>common accented chars</p>
+	<LEV>
+		<p>á	Á	 à	 À	 â	 Â	 ä	 Ä	 ã	 Ã	 å	 Å	 æ	 Æ	 ç	 Ç	 é	 É	 è	 È	 ê	 Ê	 ë	 Ë	 í	 Í	 ì	 Ì	 î	 Î	 ï	 Ï	 ñ	 Ñ	 ó	 Ó	 ò	 Ò	 ô	 Ô	 ö	 Ö	 õ	 Õ	 ø	 Ø	 œ	 Œ	 ß	 ú	 Ú	 ù	 Ù	 û	 Û	 ü	 Ü</p>
+	</LEV>
+
+	<list>
+		<p> initial space</p>
+		<p>	initial tab</p>
+		<p>variant test 1</p>
+		<LEV><when>
+			<p>first</p></when>
+			<p>first</p>
+		</LEV>
+
+		<p>variant test 2</p>
+		<LEV><when>
+			<p>second</p></when>
+			<p>second</p>
+		</LEV>
+
+		<p>variant test 3</p>
+		<LEV><when>
+			<p>fi</p></when>
+			<p>fi</p>
+		</LEV>
+
+		<LEV><when>third</when>
+			<p>variant test 4 (third)</p>
+			<LEV>
+				<p>third</p>
+				<LEV>
+					<p>v sub2</p>
+				</LEV>
+
+			</LEV>
+
+		</LEV>
+
+	</list>
+
+	<p>Jot is a minimalist format which is a mostly mark-up free markup language. it achieves this by ....</p>
+	<p>It is similar to json, markdown, </p>
+	<p>the heirarchichal nature means it also works well with editors that act as single page outliners, if they are configured to 'fold' sections based on indentation level.</p>
+	<p>jot files work with an arbitrary schema, so they are best thought of as a compressed form of xml, while  markdown etc are alternative syntaxes for html. <a><r>!@#$%^&amp;*()1234567890</r>'maildir'</a>. The </p>
+	<list><num>
+		<p>ul</p></num>
+		<p>produce arbitray xml (eg openoffice format)</p>
+		<p>produce plain text output</p>
+		<p>variant files (ie  different langauges)</p>
+		<p>produce sets of similar files from a template and source files containing unique text, ie like a text macro system</p>
+	</list>
+
+	<p>to use go to the <a><r>#howto</r>howto section</a>   </p><list>
+	<p>ul</p></list>
+	<p>should be ul</p>
+	<p>allow subnodes of type list=ul|</p>
+	<ol>
+		<p>list item 1</p>
+		<p>list item 2</p>
+	</ol>
+
+	<p>lev2</p>
+	<LEV>
+		<list><num>
+			<p>ul</p></num>
+			<p>a - make sure ul</p>
+			<p>b</p>
+			<p>c		</p>
+			<p>sublist</p>
+			<ul>
+				<p>1</p>
+				<p>2</p>
+				<p>3</p>
+				<ol>
+					<p>α</p>
+					<p>β</p>
+					<p>γ</p>
+				</ol>
+
+			</ul>
+
+		</list>
+
+	</LEV>
+
+	<p>Experiment 1</p>
+	<list><num>
+		<p>numbered</p></num>
+		<p>should be ol	</p>
+		<p>Experiment 2</p>
+		<ol>
+			<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+		</ol>
+
+	</list>
+
+	<p>Experiment 3</p>
+	<LEV>
+		<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+		<p>spam</p>
+		<pre>
+			<p>(7A4=5d5)(7A6="Buy_Today" {7CD5A8F@cabinetsbysunray.com})(7A7</p>
+			<p>=d474f7684@domain.com)(7A8</p>
+			<p>=20120831162642.EAA4667AAEF3230ECCA8@VSHARMA13)(7AA=5c9)(7AC</p>
+			<p>="Buy_Today" {37A9BF47F@chinainspect.com})(7AD</p>
+			<p>=474f7684@domain.com)(7AE=20120831165221.4E56D7C24CDFADB61EDFA)	</p>
+		</pre>
+
+		<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p><pre>
+		<p>2314, "Buy_Today{7CD5A8F@cabinetsbysunray.com}, 474f7684@squte.com, "Buy_Today Vigara" {37A9BF47F@chinainspect.com} 	</p></pre>
+	</LEV>
+
+	<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+	<p>invalid num value below:</p>
+	<list><num>err </num><id>howto1</id>
+		<p>still a list</p>
+	</list>
+
+	<p>valid num value</p>
+	<list><num>numbered </num><id>howto</id>
+		<p>target of #howto</p>
+		<list><num>
+			<p>numbered</p></num>
+			<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+				<LEV>
+				<LEV>
+					<p>Install xvfb eg <code>sudo apt-get install xvfb</code></p>
+					<p>Create a file called run_thunderbird.sh and paste this in:</p>
+					<code>
+						<p>#!/bin/bash</p>
+						<p># use -P profile name for profile</p>
+						<p>xvfb-run thunderbird&amp; </p>
+						<p>TB_PID=$!</p>
+						<p># wait 10 mins</p>
+						<p>sleep 600</p>
+						<p>kill -KILL  $TB_PID</p>
+						<p>wait $TB_PID</p>
+						<p># leaves xvfb instance running but this will be reused by any later instances of xvfb-run</p>
+					</code>
+
+					<p>Then in the command line as root:	</p>
+					<code>
+						<p>chmod ug+x run_thunderbird.sh</p>
+						<p>mv -i	run_thunderbird.sh /opt/	</p>
+					</code>
+
+				</LEV>
+
+				</LEV>
+
+		</list>
+
+		<p>Cron job</p>
+		<LEV>
+			<p>Now schedule the download to happen regularly in a cron job. Add the following script to /etc/cron.hourly, name it 00tbird.sh and set its perms using chmod as above:<pre><class>inline</class>/opt/run_thunderbird.sh</pre></p>
+			<p>This step is only needed when you want to access the mail with other clients or from other boxes</p>
+			<LEV>
+				<list><num>
+					<p>ol</p></num>
+					<p>Edit ~/.muttrc to be:</p>
+					<code>
+						<p>set spoolfile=imap://user@127.0.0.1/</p>
+						<p>set folder=imap://user@127.0.0.1/</p>
+					</code>
+
+					<p>Before running tbird again delete the soft links</p>
+				</list>
+
+			</LEV>
+
+			<comment>
+				<p>shouldnt show</p>
+				<LEV>
+					<p>shouldnt show</p>
+				</LEV>
+
+			</comment>
+
+			<case><when>web</when>
+				<p>shouldnt show</p><todo>
+				<p>shouldnt show</p></todo>
+			</case>
+
+		</LEV>
+
+	</list>
+
+</LEV>
+
+<p>See also </p>
+	<LEV>
+	<LEV><a>
+		<p><r>../link1</r>thunderbird and gmail</p></a><a>
+		<p><r>../link2</r>mork</p></a>
+	</LEV>
+
+	</LEV>
+
+</xml>
+

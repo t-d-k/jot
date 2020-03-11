@@ -17,6 +17,7 @@
 # Executables
 *.exe
 *.out
+jot2xml/jot2xml
 
 # non github notes
 notes
@@ -30,3 +31,20 @@ notes
 # ide user files
 *.user
 
+# ide files
+*.ilk
+*.obj
+*.pdb
+*.*~
+*~
+jot2xml/jot2xmlqt/build-jot2xml-Desktop_Qt_5_13_1_GCC_64bit-Debug/
+
+
+# outputs
+test-files/*.xml
+test-files/*.html
+
+# still in svn
+*/*-collapsible.*
+comparisons
+docs/reqs.jot

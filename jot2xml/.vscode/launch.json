@@ -1,0 +1,16 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+      {
+        "name": "(msvc) Launch",
+        "type": "cppvsdbg",
+        "request": "launch",
+        "program": "${workspaceFolder}/jot2xml.exe",
+        "args": ["..\\test-files\\test.jot"],
+        "stopAtEntry": false,
+        "cwd": "${workspaceFolder}",
+        "environment": [],
+        "externalConsole": false
+      }
+    ]
+  }

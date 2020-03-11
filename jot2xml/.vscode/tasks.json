@@ -1,0 +1,30 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+      {
+        "label": "msvc build",
+        "type": "shell",
+        "command": "cl.exe",
+        "args": ["/EHsc", "/Zi", "/Fe:", "jot2xml.exe", "jot2xml.cpp","tokenizer.cpp"],
+        "group": {
+          "kind": "build",
+          "isDefault": true
+        },
+        "presentation": {
+          "reveal": "always"
+        },
+        "problemMatcher": {
+          "owner": "cpp",
+          "fileLocation": ["relative", "${workspaceRoot}"],
+          "pattern": {
+              "regexp": "^(.*):(\\d+):(\\d+):\\s+(warning|error):\\s+(.*)$",
+              "file": 1,
+              "line": 2,
+              "column": 3,
+              "severity": 4,
+              "message": 5
+          }
+      }
+      }
+    ]
+  }

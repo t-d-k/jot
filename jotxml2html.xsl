@@ -32,9 +32,8 @@
 	</xsl:template>	
 			
 	<xsl:template name="str_to_id">
-		<xsl:param name="str" />
 		<xsl:call-template name="replace_special">
-			<xsl:with-param name="str" select="substring($str, 1,20)" />
+			<xsl:with-param name="str" select="normalize-space(substring(text()[1], 1,20))" />
 		</xsl:call-template>
 	</xsl:template>
 		
@@ -84,142 +83,191 @@
 		<script type="text/javascript" src="jot.js" ></script -->
 		
 		<STYLE>
-		/* 
-			colours are from the light tomorrow theme https://github.com/chriskempson/tomorrow-theme 
-		
-			#ffffff Background
-			#efefef Current Line
-			#d6d6d6 Selection
-			#4d4d4c Foreground
-			#8e908c Comment
-			#c82829 Red
-			#f5871f Orange
-			#eab700 Yellow
-			#718c00 Green
-			#3e999f Aqua
-			#4271ae Blue
-			#8959a8 Purple
-		
-		*/
-		/* also in jot.css  */
-		*{ 	color:#4d4d4c; line-height:1.2em;  font-family:  sans-serif;}
-		
-		/* headings */
-		h1,
-		h2,
-		h3,
-		h4,
-		h5,
-		h6 { 	font-weight: 700; }
-		
-		h1,
-		h2,
-		h3,
-		h4,
-		h5,
-		h6 { font-weight: 700; }
-		
-		h1 { font-size: 2.8em; }
-		
-		h2 { font-size: 2.4em; }
-		
-		h3 { font-size: 1.8em; }
-		
-		h4 { font-size: 1.4em; }
-		
-		h5 { font-size: 1.3em; }
-		
-		h6 { font-size: 1.15em; }
-		
-		code {
-			margin:0.5em;
-			padding:0.1em 0.5em 0.1em 0.5em;
-			color:#efefef;
-			background-color:#4d4d4c ;  
-		}
-		
-		code p{
-			color:#efefef;
-			background-color:#4d4d4c ;
-			margin:0;
-			padding:0;
-		}
-		
-		pre{
-			margin: 1em;
-			padding:0.5em;
-			font-weight: normal;
-			font-family: monospace, serif,courier;
-			font-size:0.8em;	
-			white-space: pre-wrap;
-			word-wrap: break-word;
-			border: 1pt solid #8e908c;	
-			box-shadow: 5pt 5pt 8pt #8e908c;
-		}
-		
-		pre.inline{
-			margin: 0em;
-			padding:0.1em 0.5em 0.1em 0.5em;
-			display:inline;
-			box-shadow: none;
-			border: 1pt solid #8e908c;
-		}
-		
-		a{ color:#4271ae; }
-		
-		.caption {		
-			text-align: center;
-			display: block;
-			margin-left: auto;
-			margin-right: auto;		
-		}
-		
-		.tooltip {
-			position: relative;
-			display: inline-block;
-			border-bottom: 1px dotted black; /* show has tooltip */
-		}
-		
-		.inline { 
-			display: inline;
-			border: none;
-		} 
-		
-		blockquote { font-family:monospace; }
-		
-		img {
-			display: block;
-			margin:0.5em;
-			margin-left: auto;
-			margin-right: auto;
-			border: 1px dotted #4d4d4c;
-		}
-		
-		li { margin:0.5em; }
-		
-		table tr:nth-child(odd){	background:#efefef; }
-		
-		th {
-			background: #d6d6d6;
-			padding :0.5em; 	
-		}
-		
-		td{	padding :0.2em 1em 0.2em 1em; }
-		
-		.alert{background:#f5871f;}		
+	/* 
+colours are from  https://paletton.com/#uid=53S0u0kllllaFw0g0qFqFg0w0aF 
+
+.color-primary-0 { color: #303C74 }	/* Main Primary color * /
+.color-primary-1 { color: #7B84AE }
+.color-primary-2 { color: #515D91 }
+.color-primary-3 { color: #172357 }
+.color-primary-4 { color: #07103A }
+
+.color-secondary-1-0 { color: #452F74 }	
+.color-secondary-1-1 { color: #8B7AAE }
+.color-secondary-1-2 { color: #655091 }
+.color-secondary-1-3 { color: #2B1657 }
+.color-secondary-1-4 { color: #17063A }
+
+.color-secondary-2-0 { color: #26596A }	
+.color-secondary-2-1 { color: #6C939F }
+.color-secondary-2-2 { color: #457585 }
+.color-secondary-2-3 { color: #104050 }
+.color-secondary-2-4 { color: #022835 }
+*/
+
+*{ 	 line-height:1em;  font-family:  sans-serif;}
+
+html {
+	background-color: #2B1657;
+	margin: 1em;
+}
+body {
+	background-color: white;
+	margin: 0 auto;
+	color: #17063A;
+	border: 1pt solid #17063A;
+	padding: 1em;
+}
+h3{ color: #303C74 }
+h4{ color: #7B84AE }
+h5{ color: #515D91 }
+h2{ color: #172357 }
+h1 { color: #07103A }
+
+
+
+/* headings */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 { 	font-weight: 700; }
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 { font-weight: 700; }
+
+h1 { font-size: 2.8em; }
+
+h2 { font-size: 2.4em; }
+
+h3 { font-size: 1.8em; }
+
+h4 { font-size: 1.4em; }
+
+h5 { font-size: 1.3em; }
+
+h6 { font-size: 1.15em; }
+
+code {
+	margin:0.5em;
+	padding:0.1em 0.5em 0.1em 0.5em;
+	color:white;
+	background-color:#07103A ;  
+}
+
+code p{
+	color:white;
+	background-color:#07103A ;
+	margin:0;
+	padding:0;
+}
+
+pre{
+	margin: 1em;
+	padding:0.5em;
+	font-weight: normal;
+	font-family: monospace, serif,courier;
+	font-size:0.8em;	
+	white-space: pre-wrap;
+	word-wrap: break-word;
+	border: 1pt solid #8B7AAE;	
+	box-shadow: 5pt 5pt 8pt #8B7AAE;
+}
+
+pre.inline{
+	margin: 0em;
+	padding:0.1em 0.5em 0.1em 0.5em;
+	display:inline;
+	box-shadow: none;
+	border: 1pt solid #8B7AAE;
+}
+
+
+a:focus {outline: thin dotted;}
+a:active,a:hover {outline: 0;}
+a {color: #452F74;}
+a:visited {color: #655091;}
+a:hover {color: #8B7AAE;}
+
+.caption {		
+	text-align: center;
+	display: block;
+	margin-left: auto;
+	margin-right: auto;		
+}
+
+.tooltip {
+	position: relative;
+	display: inline-block;
+	border-bottom: 1px dotted black; /* show has tooltip */
+}
+
+.inline { 
+	display: inline;
+	border: none;
+} 
+
+.attr{
+	font-style:italic;
+	color: #452F74;
+	font-size:0.8em;	
+	text-align: center;
+}
+
+blockquote { font-family:monospace; }
+
+img {
+	display: block;
+	margin:0.5em;
+	margin-left: auto;
+	margin-right: auto;
+	border: 1px dotted #452F74;
+}
+
+li { margin:0.5em; }
+
+table tr:nth-child(odd){	background:#6C939F; }
+
+th {
+	color:white;
+	background: #457585;
+	padding :0.5em; 	
+}
+
+td{	padding :0.2em 1em 0.2em 1em; color:#022835; }
+
+.alert{background:#8B7AAE;}	
+.level5{line-height:0em;}
+.level5 p{ font-size:1em; line-height:0.2em; 	}
+	
 
 		</STYLE><xsl:text>&#10;</xsl:text>	
+			<xsl:if 	test="//gtag">
+					<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async="async" src="https://www.googletagmanager.com/gtag/js?id={//gtag/p}"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', '<xsl:value-of select="//gtag/p"/>');
+</script>
+				</xsl:if>
 		</HEAD><xsl:text>&#10;</xsl:text>		
 		<BODY><xsl:text>&#10;</xsl:text>
-		<!-- TODO: fix js + css so this works div class="jot_header">Click the '+' or '-' next to each item to expand or collapse that node</div -->
+		<xsl:comment> DO NOT EDIT THIS HTML FILE DIRECTLY, THIS FILE IS GENERATED FROM A .JOT SOURCE FILE, AND WILL BE OVERWRITTEN. TO CHANGE THE HTML OUTPUT, EITHER CHANGE THE .JOT SOURCE FILE OR JOTXML2HTML.XSL</xsl:comment><xsl:text>&#10;</xsl:text>
+
+
 		<ARTICLE>
 			<xsl:apply-templates /><xsl:text>&#10;</xsl:text>
 		</ARTICLE><xsl:text>&#10;</xsl:text>		
 		<xsl:call-template name="footnotes"/>
-		<!-- 'nothing' is necesary because otherwise xsl collpases into single tag and browsers dont like it with 'strict'-->
-		<!-- jot.js requires general.js -->
-		<!-- script src="../../../slash_site/wwwroot/sites/all/themes/tdktheme/js/general.js?10" type="text/javascript"> /*nothing*/ </script>
-		<script src="../../../slash_site/wwwroot/sites/all/themes/tdktheme/js/jotv2.js?10" type="text/javascript"> /*nothing*/ </script -->
+		<P CLASS="attr"> This web page created by the <A HREF="https://github.com/t-d-k/jot">jot</A> markup language</P>
 		</BODY><xsl:text>&#10;</xsl:text>
 		
 		</HTML>
@@ -227,7 +275,7 @@
 	</xsl:template>
 	
 	<xsl:template name="footnotes">
-		<xsl:if test="//footnote">
+		<xsl:if 	test="//footnote">
 			<H2>Footnotes</H2>
 			<xsl:for-each select="//footnote">
 				<xsl:variable name="n"><xsl:number level="any" format="1"/></xsl:variable>
@@ -252,7 +300,6 @@
 		</xsl:if>
 	</xsl:template>
 		
-	<!-- xsl:template match="line"></xsl:template -->
 	
 	<!-- todo| is some better way of doing this - so dont have to do for every html tag?-->
 	<xsl:template match="pre">	<PRE><xsl:call-template name="common_attibutes"/><xsl:apply-templates /></PRE></xsl:template>
@@ -266,16 +313,11 @@
 		</BLOCKQUOTE>
 	</xsl:if>
 	</xsl:template>
-	
-
 	<!-- if just use templates, get errors about "cant create attributes after children" better way to fix? -->
-	<xsl:template name="common_attibutes">
+	<xsl:template name="common_attibutes_no_id">
 		<xsl:if test="class">
 			<xsl:attribute name="CLASS"><xsl:value-of select="class"/></xsl:attribute>
-		</xsl:if>
-		<xsl:if test="id">
-			<xsl:attribute name="ID"><xsl:value-of select="id"/></xsl:attribute>
-		</xsl:if>
+		</xsl:if>		
 		<xsl:if test="alt">
 			<xsl:attribute name="ALT"><xsl:value-of select="alt"/></xsl:attribute>
 		</xsl:if>		
@@ -295,6 +337,32 @@
 		<xsl:if test="width"><xsl:attribute name="WIDTH"><xsl:value-of select="width"/></xsl:attribute></xsl:if>
 	</xsl:template>
 	
+
+	<!-- add attributes, create id from text if doesnt exist -->
+	<xsl:template name="common_attibutes">
+	<xsl:call-template name="common_attibutes_no_id"/>
+		<xsl:attribute name="ID">
+		<xsl:choose>
+         <xsl:when test="id">
+           <xsl:value-of select="id"/>
+         </xsl:when>
+         <xsl:otherwise>
+          <xsl:call-template 	name="str_to_id"></xsl:call-template>
+         </xsl:otherwise>
+       </xsl:choose>
+      </xsl:attribute>
+	</xsl:template>
+	<!-- add attributes, only add id if given by user -->
+	
+		<xsl:template name="common_attibutes_lite">
+	<xsl:call-template name="common_attibutes_no_id"/>
+		
+         <xsl:if test="id">
+           <xsl:attribute name="ID"><xsl:value-of select="id"/></xsl:attribute>
+         </xsl:if>   
+      
+	</xsl:template>
+	
 	<xsl:template match="p">
 		<xsl:variable name="n">
 			<xsl:number/>  
@@ -312,7 +380,7 @@
 			</xsl:when>	
 						<xsl:when test="parent::list or parent::ol or parent::ul" >	
 				<LI> 
-				<xsl:call-template name="common_attibutes"/>
+				<xsl:call-template name="common_attibutes_lite"/>
 				<xsl:apply-templates />
 				</LI>
 			</xsl:when>
@@ -320,16 +388,16 @@
 			<xsl:apply-templates />
 			</xsl:when>
 			<xsl:when test="parent::xml and $n = 1" >	
-						<H1 CLASS="title"><xsl:call-template name="common_attibutes"/><xsl:apply-templates /></H1>
+				<H1  CLASS="title" ><xsl:call-template name="common_attibutes"/><xsl:apply-templates /></H1>
 			</xsl:when>
-					<xsl:when test="($level = 1) or parent::xml" >	
+					<xsl:when test="($level = 1) or parent::xml" >
 				<H1><xsl:call-template name="common_attibutes"/><xsl:apply-templates /></H1>
 			</xsl:when>
 					<xsl:when test="$level = 2" >	
 				<H2><xsl:call-template name="common_attibutes"/><xsl:apply-templates /></H2>
 			</xsl:when>
 					<xsl:when test="$level = 3" >	
-				<H3><xsl:call-template name="common_attibutes"/><xsl:apply-templates /></H3>
+				<H3><xsl:call-template  	name="common_attibutes"/><xsl:apply-templates /></H3>
 			</xsl:when>
 					<xsl:when test="$level = 4" >	
 				<H4><xsl:call-template name="common_attibutes"/><xsl:apply-templates /></H4>
@@ -338,7 +406,7 @@
 				<DIV><xsl:call-template name="common_attibutes"/><xsl:apply-templates /></DIV>
 			</xsl:when>
 						<xsl:when test="$level > 5" >	
-				<SPAN style="font-size=-1"><P><xsl:call-template name="common_attibutes"/><xsl:apply-templates /></P></SPAN>
+				<SPAN class="level5"><P><xsl:call-template name="common_attibutes"/><xsl:apply-templates /></P></SPAN>
 			</xsl:when>	
 			<xsl:otherwise>
 				<P>              
@@ -421,6 +489,7 @@
 	
 
 	<xsl:template match="tags">	<!-- suppress except in head --></xsl:template>
+	<xsl:template match="gtag">	<!-- suppress except in head --></xsl:template>
 	
 	<xsl:template match="comment"><!-- suppress --></xsl:template>
 	<xsl:template match="link"><!-- suppress except in head --></xsl:template>
@@ -507,20 +576,24 @@
 		</VIDEO>
 	</xsl:template>
 	
-	<xsl:template match="a">
+	<xsl:template                       	match="a">
 		<A>
 		<xsl:attribute name="HREF">		
 			<xsl:value-of select="normalize-space(r)"/>	
 		<xsl:if test="p/r"><xsl:value-of select="normalize-space(p/r)"/></xsl:if>
 			</xsl:attribute>
 		<xsl:call-template name="common_attibutes"/>
-	<xsl:apply-templates/></A>
-</xsl:template>
-
-<!-- L is like a but contents is node and text-->
-<xsl:template match="L">
-	<A HREF="#{normalize-space(.)}">
 		<xsl:apply-templates/></A>
+	</xsl:template>
+
+	<!-- l (local) is like <a> but contents is node and text (fragment id)-->
+	<xsl:template    	match="l">
+		<A HREF="#{normalize-space(.)}"><xsl:apply-templates/></A>
+	</xsl:template>
+	
+		<!-- h (http) is like <a> but contents is node and text (nonfragment id)-->
+	<xsl:template    	match="h">
+		<A HREF="https://{normalize-space(.)}"><xsl:apply-templates/></A>
 	</xsl:template>
 	
 	<xsl:template match="num">
@@ -540,12 +613,12 @@
 	<xsl:call-template name="autoIndent"></xsl:call-template>
 		<xsl:choose>
 	    <xsl:when test="normalize-space(num) ='numbered' or normalize-space(num) ='ol' or normalize-space(num) =''">
-  	 		<OL ID="{generate-id(.)}">
+  	 		<OL >
 			<xsl:apply-templates/><xsl:call-template name="autoIndent"></xsl:call-template>
   	 		</OL>	
   	 	</xsl:when>
   	 	<xsl:otherwise>
-  	 	<UL ID="{generate-id(.)}">
+  	 	<UL >
 			<xsl:apply-templates/><xsl:call-template name="autoIndent"></xsl:call-template>
   	 	</UL>	
   	 	</xsl:otherwise>
@@ -555,21 +628,21 @@
 	
 	<xsl:template match="ol">	
 	<xsl:call-template name="autoIndent"></xsl:call-template>
-		<OL ID="{generate-id(.)}">
+		<OL >
 		<xsl:apply-templates/>
 	<xsl:call-template name="autoIndent"></xsl:call-template></OL>		
 	</xsl:template>
 	
 	<xsl:template match="ul">
 	<xsl:call-template name="autoIndent"></xsl:call-template>
-		<UL ID="{generate-id(.)}">
+		<UL >
 		<xsl:apply-templates/>
 	<xsl:call-template name="autoIndent"></xsl:call-template></UL>		
 	</xsl:template>
 	
 	<xsl:template match="table">	
 	<xsl:call-template name="autoIndent"></xsl:call-template>
-		<TABLE ID="{generate-id(.)}">
+		<TABLE >
 		<xsl:call-template name="common_attibutes"/>		
 		<xsl:apply-templates/>
 	<xsl:call-template name="autoIndent"></xsl:call-template>
@@ -639,10 +712,12 @@
 					<xsl:call-template name="indent"><xsl:with-param name="level" select="$level"/></xsl:call-template>
 					<xsl:choose>
 						<xsl:when test="parent::xml" >	
-							<H1 CLASS="title"><xsl:call-template name="common_attibutes"/><xsl:apply-templates /></H1>
+							<H1 CLASS="title" ><xsl:attribute name="id"><xsl:call-template name="str_to_id"></xsl:call-template></xsl:attribute>
+							<xsl:call-template name="common_attibutes"/><xsl:apply-templates /></H1>
 						</xsl:when>
 						<xsl:when test="($level = 1) or parent::xml" >	
-							<H1><xsl:call-template name="common_attibutes"/><xsl:apply-templates /></H1>
+							<H1 CLASS="title" ><xsl:attribute name="id"></xsl:attribute>
+							<xsl:call-template name="common_attibutes"/><xsl:apply-templates /></H1>
 						</xsl:when>
 						<xsl:when test="$level = 2" >	
 							<H2><xsl:call-template name="common_attibutes"/><xsl:apply-templates /></H2>
@@ -657,7 +732,7 @@
 						<DIV><xsl:call-template name="common_attibutes"/><xsl:apply-templates /></DIV>
 						</xsl:when>			
 						<xsl:when test="$level > 5" >	
-						<SPAN style="font-size=-1"><P><xsl:call-template name="common_attibutes"/><xsl:apply-templates /></P></SPAN>
+						<SPAN class="level5"><P><xsl:call-template name="common_attibutes"/><xsl:apply-templates /></P></SPAN>
 						</xsl:when>	
 						
 						<xsl:otherwise>

@@ -9,7 +9,7 @@ Jot - Just and Only Text
 	What it's for
 				Jot's hierarchical structure means editors can be used as single page outliners (if they are configured to 'fold' sections based on indentation level).
 				Jot files work with an arbitrary schema, so it is a compressed form of XML, while Markdown etc. are abbreviated syntaxes for HTML.
-				The process for converting jot to an arbitrary output starts with the app [a r=#jot2xml|jot2xml] which converts jot format to XML, the XML file is then processed using XSL. This gives a lot of flexibility - any output that can be produced by XSL can be produced with jot. 
+				The process for converting jot to an arbitrary output starts with the app [l|Jot2xml] which converts jot format to XML, the XML file is then processed using XSL. This gives a lot of flexibility - any output that can be produced by XSL can be produced with jot. 
 				Jot can also be used as a templating system, by using multiple XSL files or XSL parameters.
 				
 				Some of the things that can be done with jot+XSL include:
@@ -41,7 +41,7 @@ Jot - Just and Only Text
 				For Ubuntu Linux you can run [code|sudo apt install libsaxonb-java].
 				The XSL processor should support XSLT 2.0				
 			Configure your text editor
-				Instructions for Vim, and Jedit are given [a r=#editors|below].
+				Instructions for Vim, and Jedit are given in [l|Editor settings].
 				For other editors, it must:
 				ul|
 					NOT silently replace tabs with spaces.
@@ -186,7 +186,7 @@ Jot - Just and Only Text
 				This is the default tag for plain text, the HTML tag produced depends on the indent level
 			Others
 				Most HTML tags and attributes can be produced by using the same string as a jot tag, e.g. [pre class=inline|~[p id=myid~|some text~]]. To add new ones, update both default.schema.jot and jotxml2html.xsl, see <i> and <class> as examples.
-	Jot2xml[id|jot2xml]
+	Jot2xml
 				Expects its input in UTF-8. Both Windows and Unix line endings are supported. The output is in UTF-8, using Unix line endings.
 					table|
 						header|{option}{meaning}  
@@ -222,8 +222,7 @@ Jot - Just and Only Text
 					comment~| no child nodes allowed under comment text
 					comment-text
 				However when parsing a schema, the schema of the schema is not checked	
-	Editor settings [id|editors]
-		todo|editor settings
-		a r=todo|Vim Settings
-		a r=todo|jEdit settings
+	Editor settings
+		a r=vim-settings.html|Vim Settings
+		todo|jEdit settings
 

@@ -79,174 +79,9 @@
 		<xsl:for-each select="/xml/link">
 			<LINK><xsl:apply-templates/></LINK>
 		</xsl:for-each>
-		<!-- link rel="stylesheet" type="text/css" href="jot.css" ></link>
-		<script type="text/javascript" src="jot.js" ></script -->
-		
-		<STYLE>
-	/* 
-colours are from  https://paletton.com/#uid=53S0u0kllllaFw0g0qFqFg0w0aF 
 
-.color-primary-0 { color: #303C74 }	/* Main Primary color * /
-.color-primary-1 { color: #7B84AE }
-.color-primary-2 { color: #515D91 }
-.color-primary-3 { color: #172357 }
-.color-primary-4 { color: #07103A }
-
-.color-secondary-1-0 { color: #452F74 }	
-.color-secondary-1-1 { color: #8B7AAE }
-.color-secondary-1-2 { color: #655091 }
-.color-secondary-1-3 { color: #2B1657 }
-.color-secondary-1-4 { color: #17063A }
-
-.color-secondary-2-0 { color: #26596A }	
-.color-secondary-2-1 { color: #6C939F }
-.color-secondary-2-2 { color: #457585 }
-.color-secondary-2-3 { color: #104050 }
-.color-secondary-2-4 { color: #022835 }
-*/
-
-*{ 	 line-height:1em;  font-family:  sans-serif;}
-
-html {
-	background-color: #2B1657;
-	margin: 1em;
-}
-body {
-	background-color: white;
-	margin: 0 auto;
-	color: #17063A;
-	border: 1pt solid #17063A;
-	padding: 1em;
-}
-h3{ color: #303C74 }
-h4{ color: #7B84AE }
-h5{ color: #515D91 }
-h2{ color: #172357 }
-h1 { color: #07103A }
-
-
-
-/* headings */
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 { 	font-weight: 700; }
-
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 { font-weight: 700; }
-
-h1 { font-size: 2.8em; }
-
-h2 { font-size: 2.4em; }
-
-h3 { font-size: 1.8em; }
-
-h4 { font-size: 1.4em; }
-
-h5 { font-size: 1.3em; }
-
-h6 { font-size: 1.15em; }
-
-code {
-	margin:0.5em;
-	padding:0.1em 0.5em 0.1em 0.5em;
-	color:white;
-	background-color:#07103A ;  
-}
-
-code p{
-	color:white;
-	background-color:#07103A ;
-	margin:0;
-	padding:0;
-}
-
-pre{
-	margin: 1em;
-	padding:0.5em;
-	font-weight: normal;
-	font-family: monospace, serif,courier;
-	font-size:0.8em;	
-	white-space: pre-wrap;
-	word-wrap: break-word;
-	border: 1pt solid #8B7AAE;	
-	box-shadow: 5pt 5pt 8pt #8B7AAE;
-}
-
-pre.inline{
-	margin: 0em;
-	padding:0.1em 0.5em 0.1em 0.5em;
-	display:inline;
-	box-shadow: none;
-	border: 1pt solid #8B7AAE;
-}
-
-
-a:focus {outline: thin dotted;}
-a:active,a:hover {outline: 0;}
-a {color: #452F74;}
-a:visited {color: #655091;}
-a:hover {color: #8B7AAE;}
-
-.caption {		
-	text-align: center;
-	display: block;
-	margin-left: auto;
-	margin-right: auto;		
-}
-
-.tooltip {
-	position: relative;
-	display: inline-block;
-	border-bottom: 1px dotted black; /* show has tooltip */
-}
-
-.inline { 
-	display: inline;
-	border: none;
-} 
-
-.attr{
-	font-style:italic;
-	color: #452F74;
-	font-size:0.8em;	
-	text-align: center;
-}
-
-blockquote { font-family:monospace; }
-
-img {
-	display: block;
-	margin:0.5em;
-	margin-left: auto;
-	margin-right: auto;
-	border: 1px dotted #452F74;
-}
-
-li { margin:0.5em; }
-
-table tr:nth-child(odd){	background:#6C939F; }
-
-th {
-	color:white;
-	background: #457585;
-	padding :0.5em; 	
-}
-
-td{	padding :0.2em 1em 0.2em 1em; color:#022835; }
-
-.alert{background:#8B7AAE;}	
-.level5{line-height:0em;}
-.level5 p{ font-size:1em; line-height:0.2em; 	}
-	
-
-		</STYLE><xsl:text>&#10;</xsl:text>	
+		<!-- script type="text/javascript" src="jot.js" ></script -->
+		<LINK REL="stylesheet" TYPE="text/css" HREF="https://t-d-k.github.io/jot/jot.css"/><xsl:text>&#10;</xsl:text>	
 			<xsl:if 	test="//gtag">
 					<!-- Global site tag (gtag.js) - Google Analytics -->
 <script async="async" src="https://www.googletagmanager.com/gtag/js?id={//gtag/p}"></script>
@@ -302,7 +137,7 @@ td{	padding :0.2em 1em 0.2em 1em; color:#022835; }
 		
 	
 	<!-- todo| is some better way of doing this - so dont have to do for every html tag?-->
-	<xsl:template match="pre">	<PRE><xsl:call-template name="common_attibutes"/><xsl:apply-templates /></PRE></xsl:template>
+	<xsl:template match="pre">	<PRE><xsl:call-template	 name="common_attibutes_no_id"/><xsl:apply-templates /></PRE></xsl:template>
 	<xsl:template match="i">		<I>			<xsl:apply-templates /></I>			</xsl:template>
 	<xsl:template match="b">		<STRONG><xsl:apply-templates /></STRONG></xsl:template>
 	<xsl:template match="quote">
@@ -375,7 +210,7 @@ td{	padding :0.2em 1em 0.2em 1em; color:#022835; }
 		<xsl:if 	test="not(ancestor-or-self::*/when)    	   or           	contains($choose,normalize-space(ancestor-or-self::*/when)) ">
 		<xsl:choose>
 			<xsl:when 	test="parent::pre" >	
-						<xsl:call-template name="common_attibutes"/>
+						<xsl:call-template  	name="common_attibutes_no_id"/>
 						<!-- \r\n --> <xsl:text>&#xa;&#xd;</xsl:text><xsl:apply-templates />
 			</xsl:when>	
 						<xsl:when test="parent::list or parent::ol or parent::ul" >	
@@ -423,7 +258,7 @@ td{	padding :0.2em 1em 0.2em 1em; color:#022835; }
 		<xsl:if test="not(ancestor-or-self::*/when) or contains($choose,normalize-space(ancestor-or-self::*/when)) ">
 		<!-- normalize-space trims, but also reduces internal whitespace, shouldn't normally be a problem - https://stackoverflow.com/questions/16573215/xslt-remove-leading-and-trailing-whitespace-of-all-attributes -->
 		<IMG>
-				<xsl:call-template name="common_attibutes"/>			
+				<xsl:call-template name="common_attibutes_no_id"/>			
 				<xsl:attribute name="SRC"><xsl:value-of select="normalize-space(text())"/></xsl:attribute>
 				<xsl:if test="p">
 					<xsl:attribute name="SRC"><xsl:value-of select="normalize-space(p/text())"/></xsl:attribute>				
@@ -578,17 +413,17 @@ td{	padding :0.2em 1em 0.2em 1em; color:#022835; }
 	
 	<xsl:template                       	match="a">
 		<A>
-		<xsl:attribute name="HREF">		
-			<xsl:value-of select="normalize-space(r)"/>	
-		<xsl:if test="p/r"><xsl:value-of select="normalize-space(p/r)"/></xsl:if>
-			</xsl:attribute>
-		<xsl:call-template name="common_attibutes"/>
+		<xsl:attribute	 name="HREF">		
+		<xsl:value-of 	select="normalize-space(r)"/>	
+		<xsl:if 	test="p/r"><xsl:value-of 	select="normalize-space(p/r)"/></xsl:if>
+		</xsl:attribute>
+		<xsl:call-template 	name="common_attibutes_no_id"/>
 		<xsl:apply-templates/></A>
 	</xsl:template>
 
-	<!-- l (local) is like <a> but contents is node and text (fragment id)-->
-	<xsl:template    	match="l">
-		<A HREF="#{normalize-space(.)}"><xsl:apply-templates/></A>
+	<!-- l (local) is like <a> but contents is node and text (fragment id) wil link to Headings if text the same-->
+	<xsl:template    	match="l">	
+		<A><xsl:attribute name="HREF">#<xsl:call-template 	name="str_to_id"></xsl:call-template></xsl:attribute><xsl:apply-templates/></A>
 	</xsl:template>
 	
 		<!-- h (http) is like <a> but contents is node and text (nonfragment id)-->
@@ -643,7 +478,7 @@ td{	padding :0.2em 1em 0.2em 1em; color:#022835; }
 	<xsl:template match="table">	
 	<xsl:call-template name="autoIndent"></xsl:call-template>
 		<TABLE >
-		<xsl:call-template name="common_attibutes"/>		
+		<xsl:call-template name="common_attibutes_no_id"/>		
 		<xsl:apply-templates/>
 	<xsl:call-template name="autoIndent"></xsl:call-template>
 		</TABLE>		
@@ -654,7 +489,7 @@ td{	padding :0.2em 1em 0.2em 1em; color:#022835; }
 
 	<xsl:call-template name="autoIndent"></xsl:call-template>
 		<TR>
-		<xsl:call-template name="common_attibutes"/>
+		<xsl:call-template name="common_attibutes_no_id"/>
 		<xsl:apply-templates/>
 		</TR>
 	<xsl:call-template name="autoIndent"></xsl:call-template>	
@@ -662,7 +497,7 @@ td{	padding :0.2em 1em 0.2em 1em; color:#022835; }
 		
 	<xsl:template match="row">	
 		<TR>
-		<xsl:call-template name="common_attibutes"/>
+		<xsl:call-template name="common_attibutes_no_id"/>
 		<xsl:apply-templates/>
 		</TR>		
 	</xsl:template>
@@ -671,13 +506,13 @@ td{	padding :0.2em 1em 0.2em 1em; color:#022835; }
 		<xsl:choose>
 			<xsl:when test="ancestor::header">
 				<TH>
-				<xsl:call-template name="common_attibutes"/>
+				<xsl:call-template name="common_attibutes_no_id"/>
 				<xsl:apply-templates/>
 				</TH>	
 			</xsl:when>
 			<xsl:otherwise>
 				<TD>
-				<xsl:call-template name="common_attibutes"/>
+				<xsl:call-template 	 name="common_attibutes_no_id"/>
 				<xsl:apply-templates/>
 				</TD>		
 			</xsl:otherwise>
@@ -712,7 +547,7 @@ td{	padding :0.2em 1em 0.2em 1em; color:#022835; }
 					<xsl:call-template name="indent"><xsl:with-param name="level" select="$level"/></xsl:call-template>
 					<xsl:choose>
 						<xsl:when test="parent::xml" >	
-							<H1 CLASS="title" ><xsl:attribute name="id"><xsl:call-template name="str_to_id"></xsl:call-template></xsl:attribute>
+							<H1 CLASS="title" ><xsl:attribute name="id"><xsl:call-template 	name="str_to_id"></xsl:call-template></xsl:attribute>
 							<xsl:call-template name="common_attibutes"/><xsl:apply-templates /></H1>
 						</xsl:when>
 						<xsl:when test="($level = 1) or parent::xml" >	
@@ -742,7 +577,7 @@ td{	padding :0.2em 1em 0.2em 1em; color:#022835; }
 					</xsl:choose>
 				</xsl:when> <!--xsl:when test="not(*)"-->
 				<xsl:otherwise>
-					<span><xsl:call-template name="common_attibutes"/><xsl:apply-templates/></span>
+					<span><xsl:call-template name="common_attibutes_no_id"/><xsl:apply-templates/></span>
 				</xsl:otherwise>
 			</xsl:choose>
 		</xsl:if>

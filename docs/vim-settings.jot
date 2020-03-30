@@ -1,0 +1,40 @@
+Settings for Vim editor
+	At a minimum, to wrap jot files correctly and use folding:
+	ul|
+		Copy the file [a r=https://github.com/t-d-k/jot/blob/master/vim-settings/jot.vim|jot.vim] to your ftplugins directory.
+		Copy the file [a r=https://github.com/t-d-k/jot/blob/master/vim-settings/ftdetect-jot.vim|ftdetect-jot.vim] to your ftdetect directory.		
+	Set indent lines
+		With heavily indented outlines it is nice to have coloured guides to the indent level. To enable this:
+		ul|
+			Install the plugin [a r=https://github.com/nathanaelkane/vim-indent-guides|vim-indent-guides]
+			Optionally (to enable it for non-jot files) add this to .vimrc (_vimrc in Windows):[pre|let g:indent_guides_enable_on_vim_startup = 1	]		
+				
+	Other changes
+		To edit English text in Vim the following settings in .vimrc are convenient:
+		pre|
+			" =============== prose editing settings =====================
+			~	" break lines between words 
+			~	set linebreak
+			~	" wrap at indent level 
+			~	set breakindent
+			~	" Turn on spell checking with English dictionary 
+			~	set spellsuggest=9 "show only 9 suggestions for misspelled words
+			~	map <F5> :setlocal spell! spelllang=en_gb<CR>
+			~	
+			~	" completion options (if no Apus) 
+			~	set complete+=k
+			~	set completeopt=longest,menuone
+			~	" longest = Vim's popup menu doesn't select the first completion item, but rather just inserts the longest common text of all matches
+			~	" menuone =the menu will come up even if there's only one match
+			~	inoremap <expr> <CR> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
+			~	" The above mapping will change the behavior of the <Enter> key when the popup menu is visible. In that case the Enter key will simply select the highlighted menu item, just as <C-Y> does.
+			~	inoremap <expr> <C-n> pumvisible() ? '<C-n>' :  '<C-n><C-r>=pumvisible() ? "\<lt>Down>" : ""<CR>'
+			~	inoremap <expr> <C-,> pumvisible() ? '<C-n>' :  '<C-x><C-k><C-n><C-p><C-r>=pumvisible() ? "\<lt>Down>" : ""<CR>'
+			~	" will make <C-N> work the way it normally does; however, when the menu
+			~	" appears, the <Down> key will be simulated. What  this accomplishes is it
+			~	" keeps a menu item always highlighted. This way you can keep typing
+			~	" characters to narrow the matches, and the nearest match will be selected so
+			~	" that you can hit Enter at any time to insert it. 
+		
+			
+	

@@ -1,0 +1,51 @@
+
+<!DOCTYPE HTML
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<HTML xmlns:v2="http://zanox.com/productdata/exportservice/v2">
+<HEAD>
+<META charset="UTF-8"></META><TITLE>Settings for Vim editor</TITLE>
+<LINK REL="stylesheet" TYPE="text/css" HREF="https://t-d-k.github.io/jot/jot.css"></LINK>
+</HEAD>
+<BODY>
+<!-- DO NOT EDIT THIS HTML FILE DIRECTLY, THIS FILE IS GENERATED FROM A .JOT SOURCE FILE, AND WILL BE OVERWRITTEN. TO CHANGE THE HTML OUTPUT, EITHER CHANGE THE .JOT SOURCE FILE OR JOTXML2HTML.XSL-->
+<ARTICLE>
+	<H1 CLASS="title" ID="Settings_for_Vim_edi">Settings for Vim editor</H1><span>
+		<H2 ID="At_a_minimum,_to_wra">At a minimum, to wrap jot files correctly and use folding:</H2>
+		<UL>
+			<LI>Copy the file <A HREF="https://github.com/t-d-k/jot/blob/master/vim-settings/jot.vim">jot.vim</A> to your ftplugins directory.</LI>
+			<LI>Copy the file <A HREF="https://github.com/t-d-k/jot/blob/master/vim-settings/ftdetect-jot.vim">ftdetect-jot.vim</A> to your ftdetect directory.		</LI>
+		</UL>
+		<H2 ID="Set_indent_lines">Set indent lines</H2><span>
+			<H3 ID="With_heavily_indente">With heavily indented outlines it is nice to have coloured guides to the indent level. To enable this:</H3>
+			<UL>
+				<LI>Install the plugin <A HREF="https://github.com/nathanaelkane/vim-indent-guides">vim-indent-guides</A></LI>
+				<LI>Optionally (to enable it for non-jot files) add this to .vimrc (_vimrc in Windows):<PRE>let g:indent_guides_enable_on_vim_startup = 1	</PRE></LI>
+			</UL></span>
+		<H2 ID="Other_changes">Other changes</H2><span>
+			<H3 ID="To_edit_English_text">To edit English text in Vim the following settings in .vimrc are convenient:</H3><PRE>
+&#xD;" =============== prose editing settings =====================
+&#xD;	" break lines between words 
+&#xD;	set linebreak
+&#xD;	" wrap at indent level 
+&#xD;	set breakindent
+&#xD;	" Turn on spell checking with English dictionary 
+&#xD;	set spellsuggest=9 "show only 9 suggestions for misspelled words
+&#xD;	map &lt;F5&gt; :setlocal spell! spelllang=en_gb&lt;CR&gt;
+&#xD;
+&#xD;	" completion options (if no Apus) 
+&#xD;	set complete+=k
+&#xD;	set completeopt=longest,menuone
+&#xD;	" longest = Vim's popup menu doesn't select the first completion item, but rather just inserts the longest common text of all matches
+&#xD;	" menuone =the menu will come up even if there's only one match
+&#xD;	inoremap &lt;expr&gt; &lt;CR&gt; pumvisible() ? "\&lt;C-y&gt;" : "\&lt;C-g&gt;u\&lt;CR&gt;"
+&#xD;	" The above mapping will change the behavior of the &lt;Enter&gt; key when the popup menu is visible. In that case the Enter key will simply select the highlighted menu item, just as &lt;C-Y&gt; does.
+&#xD;	inoremap &lt;expr&gt; &lt;C-n&gt; pumvisible() ? '&lt;C-n&gt;' :  '&lt;C-n&gt;&lt;C-r&gt;=pumvisible() ? "\&lt;lt&gt;Down&gt;" : ""&lt;CR&gt;'
+&#xD;	inoremap &lt;expr&gt; &lt;C-,&gt; pumvisible() ? '&lt;C-n&gt;' :  '&lt;C-x&gt;&lt;C-k&gt;&lt;C-n&gt;&lt;C-p&gt;&lt;C-r&gt;=pumvisible() ? "\&lt;lt&gt;Down&gt;" : ""&lt;CR&gt;'
+&#xD;	" will make &lt;C-N&gt; work the way it normally does; however, when the menu
+&#xD;	" appears, the &lt;Down&gt; key will be simulated. What  this accomplishes is it
+&#xD;	" keeps a menu item always highlighted. This way you can keep typing
+&#xD;	" characters to narrow the matches, and the nearest match will be selected so
+&#xD;	" that you can hit Enter at any time to insert it. </PRE></span></span>
+</ARTICLE>
+<P CLASS="attr"> This web page created by the <A HREF="https://github.com/t-d-k/jot">jot</A> markup language</P></BODY>
+</HTML>

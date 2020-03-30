@@ -197,6 +197,7 @@ xml
 	class
 	comment
 	case
+	gtag
 img
 	default|src
 	title
@@ -232,7 +233,8 @@ LEV
 	ol
 	ul
 	a
-	L
+	l
+	h
 	todo
 	pre
 	p
@@ -262,7 +264,7 @@ id
 p
 	default|LEV
 	a
-	L
+	l
 	code
 	list
 	b
@@ -287,8 +289,9 @@ a
 	rel
 	case
 	img
-L
-	comment|no subnodes allowed
+comment|no subnodes allowed
+l
+h
 code
 	default|p
 	comment|common to all tags
@@ -301,7 +304,7 @@ comment
 	todo
 	img
 	a
-	L
+	l
 	comment|common to all tags
 	id
 	when
@@ -310,7 +313,7 @@ comment
 	em
 citation
 	default|a
-	L
+	l
 	comment|common to all tags
 	id
 	when
@@ -345,6 +348,9 @@ ul
 	a
 	ul
 	ol
+	l
+	h
+	pre
 comment| no difference bt case and LEV, but xsl checks case must have 'when' subnode
 case
 	default|LEV
@@ -355,7 +361,7 @@ case
 	ol
 	ul
 	a
-	L
+	l
 	todo
 	pre
 	p
@@ -384,7 +390,7 @@ list
 	ol
 	ul
 	a
-	L
+	l
 	todo
 	pre
 	p
@@ -413,7 +419,7 @@ table
 	ol
 	ul
 	a
-	L
+	l
 	todo
 	pre
 	p
@@ -484,12 +490,6 @@ comment|style-only tags
 em
 	code
 	comment
-		
-
-
-
-
-
 )";
 
 void parser::addToSchema(const wstring parent, const wstring child, bool isDefault) {

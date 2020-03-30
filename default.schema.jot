@@ -160,6 +160,7 @@ ul
 	ol
 	l
 	h
+	pre
 comment| no difference bt case and LEV, but xsl checks case must have 'when' subnode
 case
 	default|LEV

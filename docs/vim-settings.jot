@@ -1,8 +1,8 @@
 Settings for Vim editor
 	At a minimum, to wrap jot files correctly and use folding:
 	ul|
-		Copy the file [a r=https://github.com/t-d-k/jot/blob/master/vim-settings/jot.vim|jot.vim] to your ftplugins directory.
-		Copy the file [a r=https://github.com/t-d-k/jot/blob/master/vim-settings/ftdetect-jot.vim|ftdetect-jot.vim] to your ftdetect directory.		
+		Copy the file [a r=https://github.com/t-d-k/jot/blob/master/vim-support/jot.vim|jot.vim] to your ftplugins directory.
+		Copy the file [a r=https://github.com/t-d-k/jot/blob/master/vim-support/ftdetect-jot.vim|ftdetect-jot.vim] to your ftdetect directory.		
 	Set indent lines
 		With heavily indented outlines it is nice to have coloured guides to the indent level. To enable this:
 		ul|

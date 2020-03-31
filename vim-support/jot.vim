@@ -74,9 +74,7 @@ let b:undo_ftplugin = "setl et< sts< fo< com< cms< inc<"
 		
 	setlocal foldexpr=JotFoldLevel(v:lnum)
 	setlocal foldmethod=expr
-	" loadview must happen after foldmethod set or tries to find folds with defaults 
-	" this generates 'no fold found' errors. why?
-	silent! loadview
+	" loadview is called on enter
 
 	" Ind(line) 
 		" Determine the indent level of a line.

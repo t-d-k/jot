@@ -178,7 +178,13 @@
 					<DIV ID="If_the_XSL_file_is_p">If the XSL file is processed with a parameter of '<EM>choose</EM>' containing the text 'web', then the node will be output, otherwise it will not.</DIV>
 					<DIV ID="For_example:">For example: <CODE>saxonb-xslt -s:"$1.xml" -xsl:"jotxml2html.xsl" -o:"$filename.html" choose=web</CODE></DIV></span>
 				<H4 ID="a_r">a r</H4><span>
-					<DIV ID="makes_an_HTML_a_tag"><EM>a</EM> makes an HTML a tag and <EM>r</EM> an HREF attribute. Example:<PRE>[a ~r=http://github/t-d-k/jot|Just and Only text]</PRE></DIV></span>
+					<DIV ID="makes_an_HTML_a_tag"><EM>a</EM> makes an HTML a tag and <EM>r</EM> an HREF attribute. Example:<PRE>[a r=http://github.com/t-d-k/jot|Just and Only text]</PRE></DIV></span>
+				<H4 ID="l">l</H4><span>
+					<DIV ID="_lower_case_L)_make"><EM>l</EM> (lower case L) makes a link to a heading in the document (any text indented 4 tabs or less). The contents of the tag should be the same as the first 20 characters of the heading.</DIV>
+					<DIV ID="Example:">Example:<PRE>[l|Some useful tags]</PRE></DIV></span>
+				<H4 ID="h">h</H4><span>
+					<DIV ID="makes_a_link_to_an"><EM>h</EM> makes a link to an external url. The contents of the tag should be the same as the url after <CODE>https://</CODE>.</DIV>
+					<DIV ID="Example:">Example:<PRE>Go to [h|github.com/t-d-k/jot]</PRE></DIV></span>
 				<H4 ID="citation">citation</H4><span>
 					<DIV ID="This_creates_footnot">This creates footnotes. Example:<PRE>Which is shown in Pew [citation link=true|http://www.pewresearch.org/url].</PRE> See jotxml2html.xsl.</DIV></span>
 				<H4 ID="table_header_row_cel">table header row cell</H4><span>

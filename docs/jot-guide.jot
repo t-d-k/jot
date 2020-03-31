@@ -136,9 +136,9 @@ Jot - Just and Only Text
 				You could also write this as:
 				pre|
 					table~|~{~{a~}~{b~}~{c~}~}~{~{1~}~{2~}~{3~}~}			
-		
+				
 		Escaping characters
-
+				
 				table caption="Escape Sequences"|
 					header|{CHAR}{ESCAPE SEQUENCE}
 					{ {~[}{~~~[, ~[lb~], ~[left-brace~]}              }
@@ -150,7 +150,7 @@ Jot - Just and Only Text
 					{ {SPACE at beginning of line}{"~~ ", ~[SPACE~]}   }
 					{ {TAB at beginning of line}{"~~\t", ~[TAB~]}      }
 					{ {QUOTE in attribute contents}{~~", ~[QUOTE~] }	 }
-	
+					
 				em|Note chars do not need to be escaped if they are not in a position to be interpreted as special chars. e.g. quote marks only need to be escaped if they are in attribute values.
 				There are no escape sequences for dots (.) or equals (=), therefore these can not be used in identifiers (tags), and "=" can not be used in attribute values.
 				The following always need to be escaped if literal chars: ~[,~],~{,~},~|,~~
@@ -170,7 +170,13 @@ Jot - Just and Only Text
 				If the XSL file is processed with a parameter of '[em|choose]' containing the text 'web', then the node will be output, otherwise it will not.
 				For example: [code|saxonb-xslt -s:"$1.xml" -xsl:"jotxml2html.xsl" -o:"$filename.html" choose=web]
 			a r
-				[em|a] makes an HTML a tag and [em|r] an HREF attribute. Example:[pre|~[a ~r=http://github/t-d-k/jot~|Just and Only text~]]
+				[em|a] makes an HTML a tag and [em|r] an HREF attribute. Example:[pre|~[a r=http://github.com/t-d-k/jot~|Just and Only text~]]
+			l
+				[em|l] (lower case L) makes a link to a heading in the document (any text indented 4 tabs or less). The contents of the tag should be the same as the first 20 characters of the heading.
+				Example:[pre|~[l~|Some useful tags~]]
+			h
+				[em|h] makes a link to an external url. The contents of the tag should be the same as the url after [code|https://].
+				Example:[pre|Go to ~[h~|github.com/t-d-k/jot~]]
 			citation
 				This creates footnotes. Example:[pre|Which is shown in Pew ~[citation link=true~|http://www.pewresearch.org/url~].] See jotxml2html.xsl.
 			table header row cell

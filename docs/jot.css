@@ -1,3 +1,54 @@
+/*reset css */
+/* http://meyerweb.com/eric/tools/css/reset/ 
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+	display: block;
+}
+body {
+	line-height: 1;
+}
+ol, ul {
+	list-style: none;
+}
+blockquote, q {
+	quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: '';
+	content: none;
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+
+
 /* 
 colours are from  https://paletton.com/#uid=53S0u0kllllaFw0g0qFqFg0w0aF 
 
@@ -20,8 +71,11 @@ colours are from  https://paletton.com/#uid=53S0u0kllllaFw0g0qFqFg0w0aF
 .color-secondary-2-4 { color: #022835 }
 */
 
-*{ 	 line-height:1em;  font-family:  sans-serif;}
-
+body, button, input, select, textarea {
+	font-family: "Lato",sans-serif;
+	font-size: 1.2rem;
+	line-height: 1.2;
+}
 html {
 	background-color: #2B1657;
 	margin: 1em;
@@ -33,21 +87,17 @@ body {
 	border: 1pt solid #17063A;
 	padding: 1em;
 }
+
+div, p{
+	margin:auto 2em;
+}
+
+/* headings */
 h3{ color: #303C74 }
 h4{ color: #7B84AE }
 h5{ color: #515D91 }
 h2{ color: #172357 }
 h1 { color: #07103A }
-
-
-
-/* headings */
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 { 	font-weight: 700; }
 
 h1,
 h2,
@@ -57,15 +107,10 @@ h5,
 h6 { font-weight: 700; }
 
 h1 { font-size: 2.8em; }
-
 h2 { font-size: 2.4em; }
-
 h3 { font-size: 1.8em; }
-
 h4 { font-size: 1.4em; }
-
 h5 { font-size: 1.3em; }
-
 h6 { font-size: 1.15em; }
 
 code {
@@ -134,7 +179,18 @@ a:hover {color: #8B7AAE;}
 	text-align: center;
 }
 
-blockquote { font-family:monospace; }
+
+blockquote {
+	font-family:monospace; 
+	margin: 0.5em 1em 0.5em 3em;
+  display: block;
+  position: relative;
+  padding-left: 1em;
+  border-left: 0.2em solid #8B7AAE;
+  font-size: 1em;
+  line-height: 1em;
+  font-weight: 100;
+}
 
 img {
 	display: block;
@@ -158,4 +214,4 @@ td{	padding :0.2em 1em 0.2em 1em; color:#022835; }
 
 .alert{background:#8B7AAE;}	
 .level5{line-height:0em;}
-.level5 p{ font-size:1em; line-height:0.2em; 	}
+.level5 p{ font-size:1em; line-height:1.2em; 	}
